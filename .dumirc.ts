@@ -16,8 +16,5 @@ export default defineConfig({
   // favicons: [
   //   'https://r.hstong.com/v2/commons/images/logo/logo_icon_120x120.png',
   // ],
-  theme: { '@c-primary': '#a51d1d' },
-  targets: {
-    ie: 11,
-  }
+  theme: { '@c-primary': '#a51d1d' }
 });
