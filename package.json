@@ -2,27 +2,26 @@
   "name": "hst-react-ui",
   "version": "0.0.1",
   "description": "基于dumi开发的组件库",
+  "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
     "build": "father build",
     "build:watch": "father dev",
+    "dev": "dumi dev",
     "docs:build": "dumi build",
     "docs:preview": "dumi preview",
-    "prepare": "husky install && dumi setup",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "prepublishOnly": "father doctor && npm run build"
+    "prepare": "husky install && dumi setup",
+    "prepublishOnly": "father doctor && npm run build",
+    "start": "npm run dev"
   },
-  "authors": [],
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -45,20 +44,15 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "antd": ">=5.0.0",
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
-  },
   "devDependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "@ant-design/pro-components": "^2.8.10",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@umijs/lint": "^4.0.0",
+    "ahooks": "^3.9.0",
     "antd": "^5.26.5",
     "dumi": "^2.4.13",
     "eslint": "^8.23.0",
@@ -72,9 +66,15 @@
     "react-dom": "^18.0.0",
     "stylelint": "^14.9.1"
   },
-  "main": ".eslintrc.js",
-  "directories": {
-    "doc": "docs"
+  "peerDependencies": {
+    "@ant-design/pro-components": ">=2.8.0",
+    "ahooks": ">=3.0.0",
+    "antd": ">=5.0.0",
+    "react": ">=16.9.0 <19.0.0",
+    "react-dom": ">=16.9.0 <19.0.0"
   },
-  "author": ""
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": []
 }

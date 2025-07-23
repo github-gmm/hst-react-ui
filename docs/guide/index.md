@@ -11,7 +11,7 @@ group:
 
 ## 安装
 
-`hst-react-ui` 是基于 `antd@5.x.x` 开发的。
+`hst-react-ui` 是基于 `antd@5.x.x` 和 `@ant-design/pro-components@2.x.x` 开发的。
 
 ### 前置依赖
 
@@ -25,7 +25,7 @@ group:
 
 ### 镜像仓库
 
-`hst-react-ui` 发布到公司的npm私服
+`hst-react-ui` 发布到公司的 npm 私服
 
 ```bash
 npm config set registry http://npm.xxx.com
