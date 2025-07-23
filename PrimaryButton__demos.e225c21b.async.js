@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkhst_react_ui=self.webpackChunkhst_react_ui||[]).push([[844],{14014:function(s,t,u){u.r(t);var _=u(6578),E=u(67294),n=u(85893);t.default=function(){return(0,n.jsx)(_.PrimaryButton,{children:"\u57FA\u7840\u6309\u94AE"})}}}]);
