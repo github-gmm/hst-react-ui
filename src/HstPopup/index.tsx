@@ -9,7 +9,6 @@ interface IHstPopupProps extends DrawerProps {
   content?: React.ReactNode;
   beforeOpen?: () => Promise<boolean> | boolean;
   beforeClose?: () => Promise<boolean> | boolean;
-  onSave?: () => Promise<boolean> | boolean;
 }
 
 export interface IHstPopupRef {
@@ -25,7 +24,6 @@ const HstPopup = forwardRef<IHstPopupRef, IHstPopupProps>((props, ref) => {
     footer,
     beforeOpen,
     beforeClose,
-    onSave,
     ...rest
   } = props;
   const [open, setOpen] = useState<boolean>(false);
@@ -42,11 +40,6 @@ const HstPopup = forwardRef<IHstPopupRef, IHstPopupProps>((props, ref) => {
     setOpen(!flag);
   };
 
-  const handleSave = async () => {
-    const flag = onSave ? await onSave() : true;
-    return flag;
-  };
-
   useImperativeHandle(ref, () => ({
     onClose: handleCancel,
     onOpen: handleOpen,
@@ -60,7 +53,6 @@ const HstPopup = forwardRef<IHstPopupRef, IHstPopupProps>((props, ref) => {
         (isModal ? (
           <HstModal
             onClosed={handleCancel}
-            onSave={handleSave}
             footer={footer}
             {...(rest as ModalProps)}
           >

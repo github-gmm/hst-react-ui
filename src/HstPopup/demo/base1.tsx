@@ -1,6 +1,5 @@
 import { Space } from 'antd';
-import type { IHstPopupRef } from 'hst-react-ui';
-import { HstButton, HstPopup } from 'hst-react-ui';
+import { HstButton, HstPopup, IHstPopupRef } from 'hst-react-ui';
 import React, { useRef } from 'react';
 
 export default () => {
@@ -15,15 +14,6 @@ export default () => {
         content={<>222</>}
         footer={
           <Space>
-            <HstButton
-              variant="outlined"
-              color="default"
-              onClick={() => {
-                popupRef.current?.onClose();
-              }}
-            >
-              关闭
-            </HstButton>
             <HstButton
               onClick={() => {
                 return new Promise((resolve) => {

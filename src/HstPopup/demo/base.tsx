@@ -1,17 +1,32 @@
 import { ProFormRadio, ProFormTextArea } from '@ant-design/pro-components';
 import { Space } from 'antd';
-import { HstButton, HstPopup } from 'hst-react-ui';
-import React from 'react';
+import { HstButton, HstPopup, IHstPopupRef } from 'hst-react-ui';
+import React, { useRef } from 'react';
 
 export default () => {
+  const popupRef = useRef<IHstPopupRef>(null);
+
   return (
     <Space>
       <HstPopup
         title="操作"
         content="是否需要禁用该记录？"
-        onSave={() => {
-          return true;
-        }}
+        footer={
+          <Space>
+            <HstButton
+              onClick={() => {
+                return new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve(true);
+                    popupRef.current?.onClose();
+                  }, 3000);
+                });
+              }}
+            >
+              确定
+            </HstButton>
+          </Space>
+        }
       >
         <HstButton>二次确认框</HstButton>
       </HstPopup>
@@ -30,9 +45,22 @@ export default () => {
             <ProFormTextArea name="audit_reason" />
           </>
         }
-        onSave={() => {
-          return false;
-        }}
+        footer={
+          <Space>
+            <HstButton
+              onClick={() => {
+                return new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve(true);
+                    popupRef.current?.onClose();
+                  }, 3000);
+                });
+              }}
+            >
+              审批
+            </HstButton>
+          </Space>
+        }
       >
         <HstButton>审核框</HstButton>
       </HstPopup>

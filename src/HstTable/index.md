@@ -1,5 +1,5 @@
 ---
-title: 弹框
+title: 表格
 toc: content
 order: 2
 group:
@@ -7,16 +7,16 @@ group:
   order: 1
 ---
 
-# HstPopup 弹框
+# HstTable 表格
 
 ## 介绍
 
-弹框组件 HstPopup
+表格组件 HstTable
 
 ## 使用
 
 ```tsx | pure
-import { HstPopup } from 'hst-react-ui';
+import { HstTable } from 'hst-react-ui';
 
 export default () => (
   <HstPopup title="标题" content="内容">
@@ -27,8 +27,7 @@ export default () => (
 
 ## 示例
 
-<code src="./demo/base.tsx">中间弹框</code>
-<code src="./demo/base1.tsx">侧弹框</code>
+<code src="./demo/base.tsx">基础</code>
 
 ## API
 

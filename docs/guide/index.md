@@ -20,7 +20,8 @@ group:
 ```
 "react": ">=16.9.0",
 "react-dom": ">=16.9.0",
-"antd": ">=5.0.0"
+"antd": ">=5.0.0",
+"@ant-design/pro-components": ">=2.8.0"
 ```
 
 ### 镜像仓库
