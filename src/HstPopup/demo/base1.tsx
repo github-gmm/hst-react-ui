@@ -1,3 +1,4 @@
+import { ProFormText } from '@ant-design/pro-components';
 import { Space } from 'antd';
 import { HstButton, HstPopup, IHstPopupRef } from 'hst-react-ui';
 import React, { useRef } from 'react';
@@ -11,7 +12,11 @@ export default () => {
         ref={popupRef}
         type="drawer"
         title="操作"
-        content={<>222</>}
+        content={
+          <>
+            <ProFormText name="name" label="名称" />
+          </>
+        }
         footer={
           <Space>
             <HstButton
