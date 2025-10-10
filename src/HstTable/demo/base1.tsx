@@ -15,20 +15,20 @@ export default () => {
       },
     },
     {
-      dataIndex: 'name',
+      dataIndex: 'age',
       hideInTable: true,
       fieldProps: {
-        placeholder: 'Name-超长字段。。。。。。',
+        placeholder: 'age-超长字段。。。。。。',
       },
       search: {
         transform: (value) => value,
       },
     },
     {
-      dataIndex: 'name',
+      dataIndex: 'sex',
       hideInTable: true,
       fieldProps: {
-        placeholder: 'Name-超长字段。。。。。。',
+        placeholder: 'Sex-超长字段。。。。。。',
       },
       search: {
         transform: (value) => value,
@@ -67,6 +67,17 @@ export default () => {
       },
     },
     {
+      dataIndex: 'id',
+      hideInTable: true,
+      fieldProps: {
+        placeholder: 'ID',
+      },
+      ellipsis: true,
+      search: {
+        transform: (value) => value,
+      },
+    },
+    {
       title: 'ID',
       dataIndex: 'id',
       ellipsis: true,
@@ -97,18 +108,18 @@ export default () => {
               id: 2,
               title: '2.3.1版本如何在业务页面修改头部状态',
             },
-            {
-              id: 3,
-              title: '2.3.1版本如何在业务页面修改头部状态',
-            },
-            {
-              id: 4,
-              title: '2.3.1版本如何在业务页面修改头部状态',
-            },
-            {
-              id: 5,
-              title: '2.3.1版本如何在业务页面修改头部状态',
-            },
+            // {
+            //   id: 3,
+            //   title: '2.3.1版本如何在业务页面修改头部状态',
+            // },
+            // {
+            //   id: 4,
+            //   title: '2.3.1版本如何在业务页面修改头部状态',
+            // },
+            // {
+            //   id: 5,
+            //   title: '2.3.1版本如何在业务页面修改头部状态',
+            // },
           ],
           total: 100,
         });

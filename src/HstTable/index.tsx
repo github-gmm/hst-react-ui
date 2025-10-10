@@ -1,4 +1,5 @@
 import { ProTable, ProTableProps } from '@ant-design/pro-components';
+import { useSetState } from 'ahooks';
 import { ConfigProvider } from 'antd';
 import enUS from 'antd/locale/en_US';
 import zhCN from 'antd/locale/zh_CN';
@@ -9,6 +10,7 @@ import './index.less';
 
 interface IHstTableProps<T = any, U = any> extends ProTableProps<T, U> {
   tableKey?: string;
+  tableRef?: React.MutableRefObject<any>;
   className?: string;
   hiddenPage?: boolean;
   autoHeight?: boolean;
@@ -30,6 +32,7 @@ const HstTable: React.FC<IHstTableProps> = (props) => {
     dataSource = undefined,
     autoHeight = true,
     headerTitle = undefined,
+    tableRef,
     ...rest
   } = props;
 
@@ -38,6 +41,10 @@ const HstTable: React.FC<IHstTableProps> = (props) => {
 
   const [labelSpan, setLabelSpan] = useState(4);
   const [submitSpan, setSubmitSpan] = useState(8);
+  const [pageConfig, setPageConfig] = useSetState({
+    showQuickJumper: true,
+    showSizeChanger: true,
+  });
 
   if (Array.isArray(dataSource)) {
     otherProps['dataSource'] = dataSource;
@@ -57,12 +64,29 @@ const HstTable: React.FC<IHstTableProps> = (props) => {
   };
 
   useEffect(() => {
+    if (!tableWidth) return;
+
     if (tableWidth < 500) {
       setLabelSpan(12);
       setSubmitSpan(12);
+    } else if (tableWidth > 1100) {
+      setLabelSpan(3);
+      setSubmitSpan(3);
     } else {
       setLabelSpan(4);
       setSubmitSpan(8);
+    }
+
+    if (tableWidth < 400) {
+      setPageConfig({
+        showQuickJumper: false,
+        showSizeChanger: false,
+      });
+    } else {
+      setPageConfig({
+        showQuickJumper: true,
+        showSizeChanger: true,
+      });
     }
   }, [tableWidth]);
 
@@ -71,6 +95,7 @@ const HstTable: React.FC<IHstTableProps> = (props) => {
       <ProTable
         size={size}
         rowKey={tableKey}
+        actionRef={tableRef}
         columns={columns}
         headerTitle={headerTitle}
         className={`hst-table-content${className ? `${className}` : ''}`}
@@ -92,8 +117,8 @@ const HstTable: React.FC<IHstTableProps> = (props) => {
           !hiddenPage
             ? {
                 size: size,
-                showQuickJumper: true,
-                showSizeChanger: true,
+                showQuickJumper: pageConfig.showQuickJumper,
+                showSizeChanger: pageConfig.showSizeChanger,
                 pageSizeOptions: [20, 50, 100, 200],
                 ...pagination,
               }
@@ -108,6 +133,7 @@ const HstTable: React.FC<IHstTableProps> = (props) => {
                 },
                 labelWidth: 'auto',
                 defaultCollapsed: false,
+                collapseRender: () => false,
                 ...(autoHeight ? { onCollapse: recalculateHeight } : {}),
                 ...search,
               }
