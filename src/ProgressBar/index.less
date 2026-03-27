@@ -1,0 +1,70 @@
+@import '../commom.less';
+
+.progress-bar {
+  width: 100%;
+
+  --stroke-color: var(--theme-primary-color);
+  --stroke-color-success: var(--theme-primary-color);
+  --percent-color: var(--white-color);
+
+  .@{layout-prefix}-progress-inner {
+    background-color: var(--page-bg-primary-color) !important;
+  }
+
+  .@{layout-prefix}-progress-status-active {
+    .@{layout-prefix}-progress-bg {
+      background-color: var(--stroke-color) !important;
+    }
+  }
+
+  .@{layout-prefix}-progress-status-success {
+    .@{layout-prefix}-progress-bg {
+      background-color: var(--stroke-color-success) !important;
+    }
+  }
+
+  .@{layout-prefix}-progress-text {
+    color: var(--percent-color) !important;
+    font-size: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .@{layout-prefix}-progress-bg {
+    border-radius: 10px !important;
+  }
+}
+
+.progress-bar-animate {
+  .@{layout-prefix}-progress-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .@{layout-prefix}-progress-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /* 条纹颜色：在当前进度条底色上叠加深色条纹 */
+    background-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.15) 75%,
+      transparent 75%,
+      transparent 100%
+    );
+    /* 一个周期：横向 40px，纵向 40px；和 keyframes 配合 */
+    background-size: 40px 40px;
+    background-repeat: repeat;
+    mix-blend-mode: multiply; // 让条纹和底色自然叠加（可按效果删掉试试）
+    opacity: 0.9; // 保持略浅一点
+    animation: progress-stripes 2s linear infinite; // 调整节奏
+    will-change: background-position;
+    pointer-events: none;
+    z-index: 1;
+  }
+}

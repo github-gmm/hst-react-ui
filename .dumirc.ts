@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/hst-react-ui/',
   publicPath: '/hst-react-ui/',
   themeConfig: {
-    name: 'HST组件库',
+    name: 'Admin',
     logo: 'https://r.hstong.com/v2/commons/images/logo/logo_icon_120x120.png',
     socialLinks: {
       github: 'https://github.com/umijs/dumi',

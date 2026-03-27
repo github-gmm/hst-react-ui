@@ -1,0 +1,49 @@
+// 滚动条ui
+@keyframes progress-stripes {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 40px 0;
+  }
+}
+
+// 颜色token(明亮)
+:root {
+  /* 主题色板 */
+  --theme-primary-color-1: #f0fff6;
+  --theme-primary-color-2: #c1f7d9;
+  --theme-primary-color-3: #91ebbd;
+  --theme-primary-color-4: #66dea4;
+  --theme-primary-color-5: #3fd18f;
+  --theme-primary-color: #1bc47d;
+  // --theme-primary-color-6: #1bc47d;
+  --theme-primary-color-7: #0e9e67;
+  --theme-primary-color-8: #057850;
+  --theme-primary-color-9: #005238;
+  --theme-primary-color-10: #002b1f;
+
+  /* 主背景色 */
+  --page-bg-primary-color: rgb(240, 242, 245);
+
+  /* 通用颜色 */
+  --white-color: #fff; // 白色
+  --black-color: #000; // 黑色
+  --black-color-5: rgba(0, 0, 0, 5%);
+  --black-color-15: rgba(0, 0, 0, 15%);
+  --black-color-45: rgba(0, 0, 0, 45%);
+  --black-color-85: rgba(0, 0, 0, 85%);
+
+  /* 表格颜色 */
+  --table-bg-color-th: rgb(250, 250, 250);
+  --table-bg-color-hover: #f0fff6;
+
+  /* 滚动条颜色 */
+  --scrollbar-bg-color: var(--page-bg-primary-color);
+  --scrollbar-hover-bg-color: var(--table-bg-color);
+}
+
+// 颜色token(暗色)
+// body.theme-dark {
+// }
