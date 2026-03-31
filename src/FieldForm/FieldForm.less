@@ -1,0 +1,15 @@
+@import '../commom.less';
+
+.field-form {
+  --form-label-width: 120px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  .@{layout-prefix}-form-item-label {
+    width: var(--form-label-width);
+    font-weight: 600;
+  }
+}

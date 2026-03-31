@@ -1,0 +1,23 @@
+@import '../../../commom.less';
+
+.table-list {
+  .@{layout-prefix}-pro-table-search {
+    flex: none !important;
+    overflow: hidden !important;
+    background: var(--page-bg-color) !important;
+    margin-block-end: 0 !important;
+
+    .@{layout-prefix}-pro-query-filter {
+      padding: 4px 10px 16px;
+
+      .@{layout-prefix}-row {
+        margin-right: 0 !important;
+        row-gap: 12px;
+
+        .@{layout-prefix}-col {
+          padding-right: 0 !important;
+        }
+      }
+    }
+  }
+}

@@ -8,3 +8,7 @@ group:
 ---
 
 # 表格列表
+
+<code src="./demo/base1.tsx">基础表格列表</code>
+
+<code src="./demo/base2.tsx">静态数据</code>

@@ -1,0 +1,83 @@
+@import '../commom.less';
+
+.tab-list-card {
+  .@{layout-prefix}-tabs-nav {
+    margin: 0;
+
+    &::before {
+      border: none;
+    }
+  }
+
+  .@{layout-prefix}-tabs-tab {
+    border: none !important;
+    padding: 6px 16px 2px !important;
+    background: inherit !important;
+  }
+
+  .@{layout-prefix}-tabs-tab-active {
+    background-color: var(--theme-primary-color) !important;
+
+    .@{layout-prefix}-tabs-tab-btn {
+      color: var(--white-color) !important;
+    }
+  }
+
+  .@{layout-prefix}-tabs-tab + .@{layout-prefix}-tabs-tab {
+    margin: 0 !important;
+  }
+}
+
+.tab-list-card-1 {
+  .@{layout-prefix}-tabs-nav {
+    margin: 0;
+
+    &::before {
+      border: none;
+    }
+  }
+
+  .@{layout-prefix}-tabs-tab {
+    border: none !important;
+    padding: 2px 10px !important;
+    background: inherit !important;
+    border-radius: 6px !important;
+  }
+
+  .@{layout-prefix}-tabs-tab-active {
+    background-color: var(--theme-primary-color) !important;
+
+    .@{layout-prefix}-tabs-tab-btn {
+      color: var(--white-color) !important;
+    }
+  }
+
+  .@{layout-prefix}-tabs-tab + .@{layout-prefix}-tabs-tab {
+    margin: 0 0 0 8px !important;
+  }
+}
+
+.tab-list-line {
+  .@{layout-prefix}-tabs-nav {
+    margin: 0;
+
+    &::before {
+      border: none;
+    }
+  }
+
+  .@{layout-prefix}-tabs-tab {
+    padding: 8px 0;
+    background: inherit !important;
+  }
+
+  .@{layout-prefix}-tabs-tab-active {
+    .@{layout-prefix}-tabs-tab-btn {
+      color: var(--theme-primary-color) !important;
+    }
+  }
+
+  .@{layout-prefix}-tabs-tab + .@{layout-prefix}-tabs-tab {
+    margin: 0 0 0 24px !important;
+  }
+}

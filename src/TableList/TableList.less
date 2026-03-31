@@ -1,0 +1,92 @@
+@import '../commom.less';
+@import './config/PaginationConfig/index.less';
+@import './config/SearchConfig/index.less';
+
+.table-list {
+  --va-table-hover-color: #ecf1f6;
+  --va-table-page-width: 500px;
+  --width-padding: 10px;
+
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  border-radius: 4px;
+  height: 100%;
+  padding: 10px var(--width-padding);
+  background: var(--white-color);
+
+  // 斑马纹行
+  &-row-stripe {
+    background-color: var(--table-bg-color-th);
+  }
+
+  &-row-stripe-other {
+    background-color: var(--white-color);
+  }
+
+  // 表格主体样式
+  .@{layout-prefix}-table {
+    // 表头行背景色
+    .@{layout-prefix}-table-thead > tr > th {
+      background: var(--table-bg-color-th);
+      font-weight: 600;
+    }
+
+    // 行悬浮效果
+    .@{layout-prefix}-table-tbody > tr:hover > td {
+      background-color: var(--table-bg-color-hover) !important;
+    }
+  }
+
+  &-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .table-list-toolbar {
+      display: flex;
+      gap: 8px;
+    }
+
+    .@{layout-prefix}-pro-table-list-toolbar {
+      padding-right: 10px;
+      border-top: 1px solid var(--page-bg-primary-color);
+      background-color: var(--white-color);
+    }
+
+    .@{layout-prefix}-pro-card {
+      border-radius: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .@{layout-prefix}-pro-card-body {
+      padding-inline: 0;
+      padding-block: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .@{layout-prefix}-table-content {
+      overflow: inherit !important;
+    }
+
+    .@{layout-prefix}-table-wrapper {
+      max-height: 100%;
+      overflow: auto;
+      display: flex;
+    }
+
+    .@{layout-prefix}-spin-nested-loading {
+      flex: 1;
+    }
+
+    .@{layout-prefix}-table-thead {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 0 12px;
+
+  // 左侧 - 面包屑
+  .navigation-bar-left {
+    flex: 1;
+  }
+
+  // 可点击的面包屑链接
+  .navigation-bar-link {
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  // 右侧 - 额外内容
+  .navigation-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

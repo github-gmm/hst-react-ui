@@ -5,6 +5,7 @@ import React from 'react';
 export default () => {
   return (
     <Space>
+      <OptionButton>default</OptionButton>
       <OptionButton type="main" primary>
         main
       </OptionButton>

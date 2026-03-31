@@ -11,8 +11,8 @@ group:
 
 ## 示例
 
-<code src="./demo/base1.tsx">表格列表：操作按钮组</code>
+<code src="./demo/base1.tsx">表格操作</code>
 
-<code src="./demo/base2.tsx">按钮组</code>
+<code src="./demo/base3.tsx">带权限</code>
 
-<code src="./demo/base3.tsx">权限按钮组</code>
+<code src="./demo/base2.tsx">功能按钮</code>
