@@ -1,4 +1,4 @@
-@import '../commom.less';
+@import '../../commom.less';
 
 .common-field {
   .@{layout-prefix}-form-item {
@@ -12,9 +12,15 @@
   .@{layout-prefix}-picker {
     width: 100%;
   }
+}
 
-  .common-field-value {
-    display: flex;
-    gap: 4px;
+.upload-node {
+  min-height: 32px;
+  display: flex;
+  cursor: pointer;
+  color: var(--black-color-45);
+
+  & :hover {
+    color: var(--black-color-85);
   }
 }

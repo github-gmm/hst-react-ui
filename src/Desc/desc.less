@@ -1,0 +1,78 @@
+.common-desc {
+  --label-width: 100px;
+  --label-align: right;
+
+  display: flex;
+  gap: 8px;
+
+  .desc-label {
+    font-weight: 600;
+    flex: 0 0 var(--label-width);
+    text-align: var(--label-align);
+    color: var(--black-color);
+  }
+
+  .desc-value {
+    flex: 1;
+    color: var(--black-color-85);
+    overflow: hidden;
+    font-size: 15px;
+  }
+
+  .desc-i18n-value {
+    .desc-i18n-item {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}
+
+.text-wrap {
+  /* 对长链接/英文启用断行 */
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.desc-link {
+  font-size: 14px;
+  color: var(--theme-primary-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--theme-primary-color-4);
+  }
+}
+
+.desc-textarea {
+  --line-clamp: 1;
+
+  .desc-value-textarea {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    /* 多行省略 */
+    display: box;
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+
+    line-clamp: var(--line-clamp);
+    -webkit-line-clamp: var(--line-clamp);
+  }
+
+  .tooltip-content {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-all;
+    white-space: pre-wrap;
+    padding-right: 4px;
+  }
+}
+
+.desc-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+}

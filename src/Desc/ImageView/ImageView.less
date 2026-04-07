@@ -1,0 +1,29 @@
+.upload-images {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .upload-images-item {
+    display: flex;
+    gap: 10px;
+    border: 1px solid var(--black-color-15);
+    border-radius: 6px;
+    padding: 5px 10px;
+
+    img {
+      width: 24px;
+    }
+
+    .delete-icon,
+    .download-icon {
+      align-self: center;
+      cursor: pointer;
+      color: var(--black-color-45);
+
+      &:hover {
+        color: var(--black-color-85);
+      }
+    }
+  }
+}

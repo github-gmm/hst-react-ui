@@ -12,20 +12,21 @@ const useTiming = () => {
   useInterval(
     () => {
       setCount((c) => c + 1);
+    },
+    running ? 1000 : undefined,
+  );
 
+  useInterval(
+    () => {
       setPercent((p) => {
-        if (p < 50) {
-          return 50;
-        } else if (p < 90) {
-          return p + 10;
-        } else if (p <= 98) {
+        if (p < 95) {
           return p + 1;
         } else {
-          return 99;
+          return 96;
         }
       });
     },
-    running ? 1000 : undefined,
+    running ? 400 : undefined,
   );
 
   // 开始

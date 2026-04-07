@@ -12,6 +12,12 @@ export { default as NavigationBar } from './NavigationBar';
 
 export { default as TabList } from './TabList';
 
+export { default as DescList } from './DescList';
+
 export { default as FieldForm } from './FieldForm';
 
+export { default as DescForm } from './DescForm';
+
 export { default as Fields } from './Fields';
+
+export { default as Desc } from './Desc';

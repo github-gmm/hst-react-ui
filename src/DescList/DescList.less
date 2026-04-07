@@ -1,0 +1,44 @@
+@import '../commom.less';
+
+.desc-list {
+  --desc-list-label-width: 100px;
+  --desc-list-radius: 4px;
+
+  width: 100%;
+
+  .@{layout-prefix}-descriptions-view {
+    border-radius: var(--desc-list-radius);
+
+    tr:nth-child(even) {
+      .@{layout-prefix}-descriptions-item-content {
+        background-color: rgba(0, 0, 0, 2%) !important;
+      }
+    }
+  }
+
+  .@{layout-prefix}-descriptions-row {
+    display: flex;
+  }
+
+  .@{layout-prefix}-descriptions-row:first-child > th:first-child {
+    border-start-start-radius: var(--desc-list-radius) !important;
+  }
+
+  .@{layout-prefix}-descriptions-row:last-child > th:first-child {
+    border-end-start-radius: var(--desc-list-radius) !important;
+  }
+
+  .@{layout-prefix}-descriptions-item-label {
+    width: var(--desc-list-label-width);
+    color: var(--black-color) !important;
+    // background-color: var(--page-bg-primary-color) !important;
+    background-color: #e4e9ec !important;
+    font-weight: 600;
+    padding: 8px !important;
+  }
+
+  .@{layout-prefix}-descriptions-item-content {
+    color: var(--black-color-85) !important;
+    padding: 8px !important;
+  }
+}
