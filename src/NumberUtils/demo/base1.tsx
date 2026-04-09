@@ -23,8 +23,8 @@ export default () => {
         <div
           style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column' }}
         >
-          <span>0.12 {formatNum('0.12', 'Percent')}</span>
-          <span>0.12 {formatNum('0.12', 'Percent', { precision: 2 })}</span>
+          <span>0.12: {formatNum('0.12', 'Percent')}</span>
+          <span>0.12: {formatNum('0.12', 'Percent', { precision: 2 })}</span>
         </div>
 
         <span>四舍五入</span>

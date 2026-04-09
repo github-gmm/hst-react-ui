@@ -23,7 +23,7 @@ const Checkbox = (props: ICheckboxProps) => {
 
   const requiredProps = {
     required: required,
-    message: `${label}不能为空`,
+    // message: `${label}不能为空`,
   };
 
   return (

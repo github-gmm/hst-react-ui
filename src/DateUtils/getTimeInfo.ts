@@ -9,22 +9,26 @@ dayjs.extend(customParseFormat);
 
 type DateUnit = 'day' | 'month' | 'year';
 
-const tzDateType = 'YYYY-MM-DDTHH:mm:ssZ';
+const tzFormatType = 'YYYY-MM-DDTHH:mm:ssZ';
 
 const getTimeByUnit = (value: number, unit: DateUnit) =>
   dayjs().add(value, unit);
 
-export const getToday = (dateType: string = tzDateType) =>
-  getTimeByUnit(0, 'day').format(dateType);
+export const getToday = (formatType: string = tzFormatType) =>
+  getTimeByUnit(0, 'day').format(formatType);
 
-export const getTimeByDay = (day: number, dateType: string = tzDateType) =>
-  getTimeByUnit(day, 'day').format(dateType);
+export const getTimeByDay = (day: number, formatType: string = tzFormatType) =>
+  getTimeByUnit(day, 'day').format(formatType);
 
-export const getTimeByMonth = (mounth: number, dateType: string = tzDateType) =>
-  getTimeByUnit(mounth, 'month').format(dateType);
+export const getTimeByMonth = (
+  month: number,
+  formatType: string = tzFormatType,
+) => getTimeByUnit(month, 'month').format(formatType);
 
-export const getTimeByYear = (year: number, dateType: string = tzDateType) =>
-  getTimeByUnit(year, 'year').format(dateType);
+export const getTimeByYear = (
+  year: number,
+  formatType: string = tzFormatType,
+) => getTimeByUnit(year, 'year').format(formatType);
 
 export const getTimezone = () => {
   return dayjs.tz.guess();

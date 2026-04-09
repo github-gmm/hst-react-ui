@@ -1,9 +1,6 @@
-// export { default as DatePicker } from './DatePicker';
-// export { default as DateRangePicker } from './DateRangePicker';
-
-// export { default as I18nText } from './I18nText';
-// export { default as I18nTextArea } from './I18nTextArea';
 import Checkbox from './Checkbox';
+import DatePicker from './DatePicker';
+import DateRangePicker from './DateRangePicker';
 import Digit from './Digit';
 import I18nText from './I18nText';
 import I18nTextArea from './I18nTextArea';
@@ -27,4 +24,6 @@ export default {
   UploadFile,
   I18nText,
   I18nTextArea,
+  DatePicker,
+  DateRangePicker,
 };

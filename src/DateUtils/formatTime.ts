@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import { isTime, isTzDateType, isTzTime } from './compareTime';
+import { isTime, isTzFormatType, isTzTime } from './compareTime';
 import {
   getTimeOffset,
   getTimeOffsetByUtc,
@@ -20,16 +20,16 @@ interface OptionsParams {
   offset?: string;
 }
 
-const dateTimeDateType = 'YYYY-MM-DD HH:mm:ss';
+const dateTimeFormatType = 'YYYY-MM-DD HH:mm:ss';
 
 // 1、普通日期转普通日期
 export const formatDate = (
   date: string,
-  dateType: string = dateTimeDateType,
+  formatType: string = dateTimeFormatType,
 ) => {
   if (!date || !isTime(date)) return date;
 
-  return dayjs(date).format(dateType);
+  return dayjs(date).format(formatType);
 };
 
 // 2、普通日期转tz日期（直接拼接偏移量）
@@ -50,21 +50,21 @@ export const formatDateToTz = (date: string, options: OptionsParams) => {
 // 3、tz日期转普通日期
 export const formatTzDate = (
   date: string,
-  dateType: string,
+  formatType: string,
   options: OptionsParams,
 ) => {
   const { timezone, utc } = options;
   if (!date || !isTime(date)) return date;
 
-  if (timezone) return dayjs(date).tz(timezone).format(dateType);
+  if (timezone) return dayjs(date).tz(timezone).format(formatType);
   if (utc)
     return dayjs(date)
       .utcOffset(utc * 60)
-      .format(dateType);
+      .format(formatType);
 
   return dayjs(date)
     .utcOffset(getTimeUtcByTzDate(date) * 60)
-    .format(dateType);
+    .format(formatType);
 };
 
 // 4、tz日期转tz日期
@@ -75,18 +75,18 @@ export const formatTzDateToTz = (date: string) => {
 // 格式化日期
 export const formatTime = (
   date: string,
-  dateType: string,
+  formatType: string,
   options: OptionsParams = {},
 ) => {
   if (!date || !isTime(date)) return date;
 
   if (isTzTime(date)) {
-    if (isTzDateType(dateType)) return formatTzDateToTz(date);
+    if (isTzFormatType(formatType)) return formatTzDateToTz(date);
 
-    return formatTzDate(date, dateType, options);
+    return formatTzDate(date, formatType, options);
   } else {
-    if (isTzDateType(dateType)) return formatDateToTz(date, options);
+    if (isTzFormatType(formatType)) return formatDateToTz(date, options);
 
-    return formatDate(date, dateType);
+    return formatDate(date, formatType);
   }
 };

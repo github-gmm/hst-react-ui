@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 
-const tzDateType = 'YYYY-MM-DDTHH:mm:ssZ';
+const tzFormatType = 'YYYY-MM-DDTHH:mm:ssZ';
 
-export const isTzDateType = (dateType: string) => {
-  return dateType === tzDateType;
+export const isTzFormatType = (formatType: string) => {
+  return formatType === tzFormatType;
 };
 
 export const isTime = (date: string) => {

@@ -10,3 +10,5 @@ group:
 # 大数字处理
 
 <code src="./demo/base1.tsx">数字格式化</code>
+
+<code src="./demo/base2.tsx">数字比较</code>

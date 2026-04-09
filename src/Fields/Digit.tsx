@@ -1,33 +1,40 @@
 import type { ProFormItemProps } from '@ant-design/pro-components';
 import { ProFormText } from '@ant-design/pro-components';
-import Decimal from 'decimal.js';
+import { useDebounceFn } from 'ahooks';
+import { maxNum, minNum } from 'hst-react-ui/NumberUtils';
 import React from 'react';
 import './field.less';
 
 export interface INumberProps
   extends Omit<ProFormItemProps, 'getValueFromEvent'> {
-  /** 整数位数 */
+  /** 整数位数: 默认10 */
   digits?: number;
-  /** 小数位数 */
+  /** 小数位数: 默认8 */
   precision?: number;
   /** 最小值 */
   min?: number;
   /** 最大值 */
   max?: number;
+  /** 自定义 */
+  suffix?: React.ReactNode;
+  /** 可监听 */
+  onChange?: (value: string) => void;
 }
 
 const Digit = (props: INumberProps) => {
   const {
-    precision = 0,
+    precision = 8,
+    digits = 10,
     className = '',
     rules = [],
     placeholder = '',
+    suffix,
     label,
-    digits,
     required,
     hidden,
     min,
     max,
+    onChange = () => {},
     ...rest
   } = props;
 
@@ -131,38 +138,18 @@ const Digit = (props: INumberProps) => {
             if (value === undefined || value === null || value === '') {
               return Promise.resolve();
             }
-            // 输入中的中间态，如 "-"、"123."
-            if (
-              value === '-' ||
-              value === '.' ||
-              value === '-.' ||
-              value.endsWith('.')
-            ) {
-              return Promise.resolve();
+            if (min !== undefined && minNum(value, min)) {
+              return Promise.reject(`不能小于 ${min}`);
             }
-            let num: Decimal;
-            try {
-              num = new Decimal(value);
-            } catch (e) {
-              // 转不成 Decimal，当成非法数字
-              return Promise.reject(`必须是数字`);
-            }
-            if (min !== undefined) {
-              const minDec = new Decimal(min);
-              if (num.lt(minDec)) {
-                return Promise.reject(`不能小于 ${min}`);
-              }
-            }
-            if (max !== undefined) {
-              const maxDec = new Decimal(max);
-              if (num.gt(maxDec)) {
-                return Promise.reject(`不能大于 ${max}`);
-              }
+            if (max !== undefined && maxNum(value, max)) {
+              return Promise.reject(`不能大于 ${max}`);
             }
             return Promise.resolve();
           },
         }
       : undefined;
+
+  const { run: onChangeDebounce } = useDebounceFn(onChange, { wait: 500 });
 
   return (
     <div
@@ -177,6 +164,10 @@ const Digit = (props: INumberProps) => {
           ...rest?.fieldProps,
           placeholder:
             (placeholder as string) || (typeof label === 'string' ? label : ''),
+          onChange: (e) => {
+            onChangeDebounce(`${e.target.value}`);
+          },
+          suffix: suffix,
         }}
         rules={
           [requiredRule, rangeRule, ...rules].filter(

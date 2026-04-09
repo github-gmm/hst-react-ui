@@ -24,7 +24,7 @@ const Radio = (props: IRadioProps) => {
 
   const requiredProps = {
     required: required,
-    message: `${label}不能为空`,
+    // message: `${label}不能为空`,
   };
 
   return (
