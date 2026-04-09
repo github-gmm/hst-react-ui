@@ -5,6 +5,8 @@
 // export { default as I18nTextArea } from './I18nTextArea';
 import Checkbox from './Checkbox';
 import Digit from './Digit';
+import I18nText from './I18nText';
+import I18nTextArea from './I18nTextArea';
 import Lov from './Lov';
 import Radio from './Radio';
 import Select from './Select';
@@ -23,4 +25,6 @@ export default {
   Select,
   UploadImage,
   UploadFile,
+  I18nText,
+  I18nTextArea,
 };

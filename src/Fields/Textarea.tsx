@@ -5,15 +5,19 @@ import './field.less';
 
 export interface ITextareaProps
   extends Omit<ProFormItemProps, 'getValueFromEvent'> {
+  /** 长度限制: 默认500 */
   max?: number;
+  /** 是否展示长度: 默认打开 */
+  isShowCount?: boolean;
 }
 
 const Textarea = (props: ITextareaProps) => {
   const {
     max = 500,
-    rules = [],
     className = '',
     placeholder = '',
+    rules = [],
+    isShowCount = true,
     required,
     hidden,
     label,
@@ -22,7 +26,7 @@ const Textarea = (props: ITextareaProps) => {
 
   const requiredProps = {
     required: required,
-    message: `${label}不能为空`,
+    // message: `${label}不能为空`,
   };
 
   return (
@@ -36,6 +40,7 @@ const Textarea = (props: ITextareaProps) => {
         fieldProps={{
           ...rest.fieldProps,
           maxLength: max,
+          showCount: isShowCount,
           placeholder:
             (placeholder as string) || (typeof label === 'string' ? label : ''),
         }}

@@ -33,7 +33,7 @@ const Digit = (props: INumberProps) => {
 
   const requiredRule = {
     required: required,
-    message: `${label}不能为空`,
+    // message: `${label}不能为空`,
   };
 
   const normalizeNumberInput = (input: string): string => {

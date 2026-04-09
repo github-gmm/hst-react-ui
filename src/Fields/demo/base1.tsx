@@ -3,17 +3,114 @@ import React from 'react';
 
 export default () => {
   return (
-    <div style={{ width: 300 }}>
+    <div style={{ width: 500 }}>
+      <h1>简单表单</h1>
       <FieldForm>
-        <Fields.Text label="文本" name="text" required />
         <Fields.Text
-          label="文本搜索框"
-          name="text"
+          label="纯文本"
+          name="text1"
           required
-          // loading
-          onSearch={() => {}}
+          isShowCount
+          onChange={(value) => {
+            console.log('查询纯文本', value);
+          }}
         />
-        <Fields.Textarea required label="多行文本" name="textarea" />
+        <Fields.Text
+          label="查询文本"
+          name="text2"
+          required
+          onSearch={(value) => {
+            console.log('查询中', value);
+          }}
+        />
+        <Fields.Text
+          label="查询文本"
+          name="text3"
+          required
+          isSearchLoading
+          onSearch={(value) => {
+            console.log('查询文本', value);
+          }}
+        />
+        <Fields.I18nText
+          label="多语言"
+          name="text"
+          langConfig={[
+            {
+              label: '简体中文',
+              value: 'Cn',
+            },
+            {
+              label: '繁体中文',
+              value: 'Hk',
+            },
+            {
+              label: '英文',
+              value: 'En',
+            },
+          ]}
+          required
+        />
+        <Fields.I18nText
+          layout="horizontal"
+          label="多语言"
+          name="text1"
+          langConfig={[
+            {
+              label: '简',
+              value: 'Cn',
+            },
+            {
+              label: '繁',
+              value: 'Hk',
+            },
+            {
+              label: '英',
+              value: 'En',
+            },
+          ]}
+          required
+        />
+        <Fields.I18nTextArea
+          label="多语言"
+          name="text"
+          langConfig={[
+            {
+              label: '简体中文',
+              value: 'Cn',
+            },
+            {
+              label: '繁体中文',
+              value: 'Hk',
+            },
+            {
+              label: '英文',
+              value: 'En',
+            },
+          ]}
+          required
+        />
+        <Fields.I18nTextArea
+          layout="horizontal"
+          label="多语言"
+          name="text1"
+          langConfig={[
+            {
+              label: '简',
+              value: 'Cn',
+            },
+            {
+              label: '繁',
+              value: 'Hk',
+            },
+            {
+              label: '英',
+              value: 'En',
+            },
+          ]}
+          required
+        />
+        <Fields.Textarea required label="纯长文本" name="textarea" />
         <Fields.Radio
           required
           label="单选"
@@ -66,7 +163,7 @@ export default () => {
         <Fields.Select
           search
           required
-          label="搜索下拉框"
+          label="不固定枚举"
           name="select"
           request={async (keyword: string) => {
             console.log(keyword);
@@ -78,32 +175,6 @@ export default () => {
             ];
           }}
         />
-        <Fields.UploadImage
-          required
-          label="上传图片"
-          name="image"
-          customOnUpload={async () => {
-            return [
-              {
-                name: '图片1图片1图片1图片1图片1图片1图片1图片1',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-            ];
-          }}
-        ></Fields.UploadImage>
-        <Fields.UploadFile
-          required
-          label="上传文件"
-          name="file"
-          customOnUpload={async () => {
-            return [
-              {
-                name: '图片1图片1图片1图片1图片1图片1图片1图片1',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              },
-            ];
-          }}
-        ></Fields.UploadFile>
       </FieldForm>
     </div>
   );

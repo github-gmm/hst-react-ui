@@ -1,0 +1,32 @@
+@import '../../commom.less';
+
+.i18n-text-field {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.i18n-text-field-items {
+  div {
+    margin-bottom: 2px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .i18n-text-field-item {
+    display: flex;
+    gap: 5px;
+
+    .@{layout-prefix}-select {
+      width: auto;
+    }
+
+    .i18n-text-field-item-text {
+      flex: 1;
+    }
+  }
+}
