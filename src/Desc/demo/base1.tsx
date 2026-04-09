@@ -118,7 +118,26 @@ export default () => {
           precision={2}
         />
         <Desc.DigitView label="数字(百分比)" value="10" formatter="percent" />
-        <Desc.DigitView label="数字" value="a" />
+        <Desc.DigitView label="非数字" value="a" />
+        <Desc.DateView label="2026-03-31" value="2026-03-31" />
+        <Desc.DateView label="2026-03" value="2026-03" />
+        <Desc.DateView label="2026-03" value="2026-03" />
+        <Desc.DateView
+          label="2026-03-31T14:15:16+05:00"
+          value="2026-03-31T14:15:16+05:00"
+        />
+        <Desc.DateView
+          label="2026-03-31T14:15:16+08:00"
+          value="2026-03-31T14:15:16+08:00"
+        />
+        <Desc.DateView
+          label="2026-03-31T14:15:16+08:00"
+          value="2026-03-31T14:15:16+08:00"
+          dataType="YYYY-MM-DD HH:mm:ss"
+          options={{
+            utc: 5,
+          }}
+        />
       </DescForm>
     </div>
   );

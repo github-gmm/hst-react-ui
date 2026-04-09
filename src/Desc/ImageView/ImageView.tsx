@@ -13,6 +13,7 @@ export interface IImageViewProps {
   showDelete?: boolean;
   showDownload?: boolean;
   className?: string;
+  borderd?: boolean;
   handleDelete?: (index: number) => void;
 }
 
@@ -20,6 +21,7 @@ const ImageView = (props: IImageViewProps) => {
   const {
     fileList,
     showName = true,
+    borderd = true,
     showDelete = false,
     showDownload = false,
     className = '',
@@ -27,7 +29,7 @@ const ImageView = (props: IImageViewProps) => {
   } = props;
 
   return (
-    <div className={`upload-images ${className}`}>
+    <div className={`upload-images ${className} ${borderd && 'borderd'}`}>
       {fileList.map((item, _i) => (
         <div key={item.name} className={'upload-images-item'}>
           <Image src={item.url} height={24} width={24} />

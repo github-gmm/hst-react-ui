@@ -1,5 +1,9 @@
 import './theme.less';
 
+export * from './DateUtils';
+
+export * from './NumberUtils';
+
 export { default as OptionButton } from './OptionButton';
 
 export { default as ProgressBar } from './ProgressBar';

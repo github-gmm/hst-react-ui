@@ -1,4 +1,5 @@
 import BadgeView from './BadgeView';
+import DateView from './DateView';
 import DigitView from './DigitView';
 import FileView from './FileView';
 import ImageView from './ImageView';
@@ -16,4 +17,5 @@ export default {
   BadgeView,
   LabelView,
   DigitView,
+  DateView,
 };

@@ -24,6 +24,7 @@ export default () => {
           label: '图片',
           children: (
             <Desc.ImageView
+              borderd={false}
               fileList={[
                 {
                   name: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
@@ -37,6 +38,7 @@ export default () => {
           label: '文件',
           children: (
             <Desc.FileView
+              borderd={false}
               fileList={[
                 {
                   name: '图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片',
