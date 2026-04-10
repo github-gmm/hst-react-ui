@@ -1,54 +1,40 @@
-import { Desc, DescList } from 'hst-react-ui';
+import { Desc, DescForm } from 'hst-react-ui';
 import React from 'react';
 
 export default () => {
   return (
-    <DescList
-      column={2}
-      items={[
-        {
-          label: '文本',
-          children: (
-            <Desc.TextView
-              hideLabel
-              value="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          ),
-          span: 1,
-        },
-        {
-          label: '长文本',
-          children: <Desc.TextareaView hideLabel value="111111111" />,
-        },
-        {
-          label: '图片',
-          children: (
-            <Desc.ImageView
-              borderd={false}
-              fileList={[
-                {
-                  name: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                  url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-              ]}
-            />
-          ),
-        },
-        {
-          label: '文件',
-          children: (
-            <Desc.FileView
-              borderd={false}
-              fileList={[
-                {
-                  name: '图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片',
-                  url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-              ]}
-            />
-          ),
-        },
-      ]}
-    />
+    <div style={{ width: 400, border: '1px solid #eee', padding: 10 }}>
+      <DescForm labelWidth={150}>
+        <Desc.TextView label="文件">
+          <Desc.FileView
+            fileList={[
+              {
+                name: '图片1',
+                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+              },
+              {
+                name: '图片222222222图片222222222图片222222222',
+                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+              },
+            ]}
+          />
+        </Desc.TextView>
+        <Desc.TextView label="图片">
+          <Desc.ImageView
+            showDelete
+            fileList={[
+              {
+                name: '图片1',
+                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+              },
+              {
+                name: '图片222222222图片222222222图片222222222图片222222222',
+                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+              },
+            ]}
+          />
+        </Desc.TextView>
+      </DescForm>
+    </div>
   );
 };

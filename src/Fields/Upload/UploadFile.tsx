@@ -12,7 +12,6 @@ interface FileType {
 }
 
 const acceptType = {
-  image: '图片',
   excel: '表格',
   audio: '音频',
   video: '视频',
@@ -20,10 +19,11 @@ const acceptType = {
 
 export interface IUploadFileProps extends Omit<ProFormItemProps, 'accept'> {
   children?: React.ReactNode;
-  max?: number;
-  size?: number; // 10 MB
   accept?: 'excel' | 'audio' | 'video' | 'none';
-  oldFileList?: FileType[];
+  initFileList?: FileType[]; // 初始值
+  max?: number; // 图片数量
+  size?: number; // 图片大小
+  templateNode?: React.ReactNode;
   onChange?: (fileList: FileType[]) => void;
   customOnUpload: (file: File) => Promise<FileType[]>;
 }
@@ -32,17 +32,18 @@ const UploadFile = (props: IUploadFileProps) => {
   const {
     max = 1,
     size = 10,
-    children = <Button icon={<UploadOutlined />}>上传</Button>,
     accept = 'excel',
     className = '',
+    children = <Button icon={<UploadOutlined />}>上传</Button>,
+    hidden,
     label,
     required,
-    oldFileList,
-    hidden,
+    initFileList,
+    templateNode = null,
     customOnUpload,
     ...rest
   } = props;
-  const [fileList, setFileList] = useState<FileType[]>(oldFileList ?? []);
+  const [fileList, setFileList] = useState<FileType[]>(initFileList ?? []);
   const [loading, setLoading] = useState(false);
 
   const requiredProps = {
@@ -93,22 +94,35 @@ const UploadFile = (props: IUploadFileProps) => {
       className={`common-field ${className}`}
       style={{ display: hidden ? 'none' : undefined }}
     >
-      <ProForm.Item {...rest} label={label} name={name} rules={[requiredProps]}>
-        {fileList.length < max && (
-          <Spin spinning={loading}>
-            <Upload fileList={[]} beforeUpload={beforeUpload}>
-              <div className={'upload-node'}>{children}</div>
-            </Upload>
-          </Spin>
-        )}
+      <ProForm.Item {...rest} label={label} rules={[requiredProps]}>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <div>
+            {fileList.length < max && (
+              <Spin spinning={loading}>
+                <Upload fileList={[]} beforeUpload={beforeUpload}>
+                  <div
+                    className={[
+                      'upload-node',
+                      fileList.length > 0 ? 'upload-node-length' : '',
+                    ].join(' ')}
+                  >
+                    {children}
+                  </div>
+                </Upload>
+              </Spin>
+            )}
 
-        <FileView
-          fileList={fileList}
-          showDelete
-          handleDelete={(_i) => {
-            setFileList(fileList.filter((_, index) => index !== _i));
-          }}
-        />
+            <FileView
+              fileList={fileList}
+              showDelete
+              handleDelete={(_i) => {
+                setFileList(fileList.filter((_, index) => index !== _i));
+              }}
+            />
+          </div>
+
+          {templateNode}
+        </div>
       </ProForm.Item>
     </div>
   );

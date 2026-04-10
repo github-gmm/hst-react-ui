@@ -7,13 +7,28 @@ export default () => {
       <FieldForm>
         <Fields.Lov
           required
-          label="固定枚举"
+          label="固定枚举单选"
           name="lov"
           item={[
             {
               label: '男',
               value: '1',
-              disabled: true,
+            },
+            {
+              label: '女',
+              value: '2',
+            },
+          ]}
+        />
+        <Fields.Lov
+          multiple
+          required
+          label="固定枚举多选"
+          name="lov1"
+          item={[
+            {
+              label: '男',
+              value: '1',
             },
             {
               label: '女',
@@ -32,6 +47,10 @@ export default () => {
               {
                 label: '男',
                 value: '1',
+              },
+              {
+                label: '女',
+                value: '2',
               },
             ];
           }}

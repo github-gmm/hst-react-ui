@@ -20,3 +20,5 @@ group:
 <code src="./demo/base4.tsx">单选多选框</code>
 
 <code src="./demo/base5.tsx">下拉框</code>
+
+<code src="./demo/base6.tsx">上传</code>

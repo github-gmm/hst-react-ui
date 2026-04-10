@@ -58,6 +58,7 @@ const TextareaView = (props: ITextareaView) => {
         ) : (
           <>
             <Tooltip
+              placement="topLeft"
               title={<div className="tooltip-content">{value}</div>}
               open={value ? undefined : false}
             >

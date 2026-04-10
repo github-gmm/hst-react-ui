@@ -16,7 +16,7 @@ export default () => {
         },
         {
           label: '标签3',
-          value: '',
+          value: '3',
         },
       ]}
     />

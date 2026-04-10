@@ -19,32 +19,29 @@ interface FileType {
 
 const acceptType = {
   image: '图片',
-  excel: '表格',
-  audio: '音频',
-  video: '视频',
 };
 
 export interface IUploadImageProps extends Omit<ProFormItemProps, 'accept'> {
   children?: React.ReactNode;
-  max?: number;
-  size?: number; // 10 MB
-  ratio?: number; // 宽高比
-  imgSize?: { width: number; height: number }; // 宽高像素
-  accept?: 'image';
-  oldFileList?: FileType[];
+  initFileList?: FileType[]; // 初始值
+  max?: number; // 图片数量
+  size?: number; // 图片大小
+  ratio?: number; // 图片宽高比
+  imgSize?: { width: number; height: number }; // 图片宽高像素
   onChange?: (fileList: FileType[]) => void;
   customOnUpload: (file: File) => Promise<FileType[]>;
 }
+
+const accept = 'image';
 
 const UploadImage = (props: IUploadImageProps) => {
   const {
     max = 1,
     size = 10,
     imgSize = null,
-    accept = 'image',
-    children = <Button icon={<UploadOutlined />}>上传</Button>,
-    oldFileList = [],
     className = '',
+    initFileList = [],
+    children = <Button icon={<UploadOutlined />}>上传</Button>,
     label,
     required,
     ratio,
@@ -52,12 +49,12 @@ const UploadImage = (props: IUploadImageProps) => {
     customOnUpload,
     ...rest
   } = props;
-  const [fileList, setFileList] = useState<FileType[]>(oldFileList ?? []);
+  const [fileList, setFileList] = useState<FileType[]>(initFileList ?? []);
   const [loading, setLoading] = useState(false);
 
   const requiredProps = {
     required: required,
-    message: `${label}不能为空`,
+    // message: `${label}不能为空`,
   };
 
   const beforeUpload = async (file: File) => {
@@ -127,7 +124,14 @@ const UploadImage = (props: IUploadImageProps) => {
         {fileList.length < max && (
           <Spin spinning={loading}>
             <Upload fileList={[]} beforeUpload={beforeUpload}>
-              <div className="upload-node">{children}</div>
+              <div
+                className={[
+                  'upload-node',
+                  fileList.length > 0 ? 'upload-node-length' : '',
+                ].join(' ')}
+              >
+                {children}
+              </div>
             </Upload>
           </Spin>
         )}
