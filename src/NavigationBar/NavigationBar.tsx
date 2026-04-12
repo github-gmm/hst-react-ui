@@ -16,8 +16,10 @@ export interface IVaBreadcrumbItem {
 
 /** 导航栏属性 */
 export interface IVaNavigationBarProps {
-  /** 面包屑项目 */
+  /** 左侧：面包屑 */
   items?: IVaBreadcrumbItem[];
+  /** 左侧标题 */
+  title?: ReactNode;
   /** 右侧内容（按钮、搜索等） */
   extra?: ReactNode;
   /** 自定义类名 */
@@ -27,7 +29,7 @@ export interface IVaNavigationBarProps {
 }
 
 export const NavigationBar = (props: IVaNavigationBarProps) => {
-  const { items = [], extra, className = '', style } = props;
+  const { items = [], extra, className = '', style, title } = props;
 
   // 构建面包屑项目
   const breadcrumbItems = useMemo(() => {
@@ -47,7 +49,7 @@ export const NavigationBar = (props: IVaNavigationBarProps) => {
   return (
     <div className={`navigation-bar ${className}`} style={style}>
       <div className="navigation-bar-left">
-        <Breadcrumb items={breadcrumbItems} />
+        {title ? title : <Breadcrumb items={breadcrumbItems} />}
       </div>
       {extra && <div className="navigation-bar-right">{extra}</div>}
     </div>

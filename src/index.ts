@@ -10,7 +10,7 @@ export { default as ProgressBar } from './ProgressBar';
 
 export { default as TableList } from './TableList';
 
-export { default as PageContainer } from './PageContainer';
+export { CompContainer, PageContainer } from './Container';
 
 export { default as NavigationBar } from './NavigationBar';
 

@@ -18,8 +18,8 @@ export interface IVaPageProps {
 export const PageContainer = (props: IVaPageProps) => {
   const {
     height = 'calc(100vh - 56px)',
-    style,
     className = '',
+    style,
     children,
   } = props;
 

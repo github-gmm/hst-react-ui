@@ -1,4 +1,5 @@
 import { ProColumns } from '@ant-design/pro-components';
+import { Button, Space } from 'antd';
 import { NavigationBar, PageContainer, TableList } from 'hst-react-ui';
 import React from 'react';
 
@@ -17,7 +18,15 @@ export default () => {
   ];
   return (
     <PageContainer height="500px">
-      <NavigationBar items={[{ title: '一级菜单' }, { title: '二级菜单' }]} />
+      <NavigationBar
+        items={[{ title: '一级菜单' }, { title: '二级菜单' }]}
+        extra={
+          <Space>
+            <Button type="primary">一级按钮</Button>
+            <Button>二级按钮</Button>
+          </Space>
+        }
+      />
       <TableList
         columns={columns}
         dataSource={[{}, {}, {}, {}, {}, {}, {}, {}, {}]}

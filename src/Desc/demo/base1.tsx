@@ -59,6 +59,49 @@ export default () => {
           copyable
           wrap
         />
+        <Desc.I18nTextView
+          label="多语言"
+          copyable
+          langName="name"
+          langConfig={[
+            {
+              label: '英',
+              value: 'En',
+            },
+            {
+              label: '中',
+              value: 'Cn',
+            },
+          ]}
+          value={{
+            nameEn:
+              '单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本1',
+            nameCn:
+              '单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本2',
+          }}
+        />
+        <Desc.I18nTextareaView
+          label="多语言"
+          copyable
+          maxLines={2}
+          langName="name"
+          langConfig={[
+            {
+              label: '英',
+              value: 'En',
+            },
+            {
+              label: '中',
+              value: 'Cn',
+            },
+          ]}
+          value={{
+            nameEn:
+              '单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本1',
+            nameCn:
+              '单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本单行文本2',
+          }}
+        />
       </DescForm>
     </div>
   );

@@ -18,6 +18,7 @@ export interface ITabListProps
   }[];
   style?: React.CSSProperties;
   activeKey?: string;
+  layout?: 'horizontal' | 'vertical';
   onChange?: (key: string) => void;
 }
 
@@ -43,6 +44,8 @@ const TabList = (props: ITabListProps) => {
     ...rest
   } = props;
 
+  const { layout = tabStyle === 'line' ? 'horizontal' : '' } = props;
+
   const newItems = items
     .map((item) => {
       return {
@@ -59,8 +62,10 @@ const TabList = (props: ITabListProps) => {
   const tabClassName = TabClassNames[tabStyle];
   const tabType = TabTypes[tabStyle];
 
+  const layoutClassName = `tab-${layout}`;
+
   return (
-    <div className={tabClassName} style={style}>
+    <div className={[tabClassName, layoutClassName].join(' ')} style={style}>
       <Tabs
         {...rest}
         type={tabType}
