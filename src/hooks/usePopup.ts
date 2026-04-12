@@ -1,4 +1,4 @@
-import { App } from 'antd';
+import { App, Modal } from 'antd';
 import { useState } from 'react';
 
 interface IConfirmPopup {
@@ -10,7 +10,7 @@ interface IConfirmPopup {
 
 const usePopup = () => {
   const [visible, setVisible] = useState(false);
-  const { modal } = App.useApp();
+  const { modal = null } = App.useApp();
 
   const open = () => {
     setVisible(true);
@@ -27,7 +27,8 @@ const usePopup = () => {
    * @param confirm 确认回调
    */
   const confirmPopup = ({ title, content, confirm }: IConfirmPopup) => {
-    const close = modal.confirm({
+    const modalPop = modal?.confirm ? modal : Modal;
+    const close = modalPop?.confirm({
       title,
       content,
       onOk() {

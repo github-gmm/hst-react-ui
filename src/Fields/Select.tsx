@@ -7,12 +7,14 @@ import React from 'react';
 import './field.less';
 
 export interface ISelectProps extends Omit<ProFormItemProps, 'options'> {
-  /** 请求接口 */
-  request: (keyword: string) => Promise<RequestOptionsType[]>;
   /** 多选 */
   multiple?: boolean;
   /** 可搜索 */
   search?: boolean;
+  /** 请求接口 */
+  request: (keyword: string) => Promise<RequestOptionsType[]>;
+  /** 可监听 */
+  onChange?: (value: string, option: Record<string, any>) => void;
 }
 
 const Select = (props: ISelectProps) => {
@@ -25,6 +27,7 @@ const Select = (props: ISelectProps) => {
     required,
     hidden,
     request,
+    onChange = () => {},
     ...rest
   } = props;
 
@@ -50,6 +53,7 @@ const Select = (props: ISelectProps) => {
             (placeholder as string) || (typeof label === 'string' ? label : ''),
           mode: multiple ? 'multiple' : undefined,
           showSearch: search,
+          onChange: onChange,
         }}
       />
     </div>

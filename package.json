@@ -66,6 +66,7 @@
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-draggable": "^4.5.0",
     "stylelint": "^14.9.1"
   },
   "peerDependencies": {

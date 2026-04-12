@@ -1,9 +1,3 @@
-export const defaultColor = {
-  font_color: '',
-  bg_color: '',
-  bd_color: '',
-};
-
 export const mainColor = {
   font_color: '#409eff',
   bg_color: '#ecf5ff',
@@ -32,12 +26,6 @@ export const waringColor = {
   font_color: '#e6a23c',
   bg_color: '#fdf6ec',
   bd_color: '#f5dab1',
-};
-
-export const defaultColor_dark = {
-  font_color: '',
-  bg_color: '',
-  bd_color: '',
 };
 
 export const mainColor_dark = {
@@ -71,13 +59,11 @@ export const waringColor_dark = {
 };
 
 export default {
-  defaultColor,
   mainColor,
   successColor,
   errorColor,
   infoColor,
   waringColor,
-  defaultColor_dark,
   mainColor_dark,
   successColor_dark,
   errorColor_dark,

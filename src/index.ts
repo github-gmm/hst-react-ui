@@ -8,6 +8,10 @@ export { default as OptionButton } from './OptionButton';
 
 export { default as ProgressBar } from './ProgressBar';
 
+export { default as ModalPopup } from './DragModalPopup';
+
+export { default as DrawerPopup } from './DrawerPopup';
+
 export { default as TableList } from './TableList';
 
 export { CompContainer, PageContainer } from './Container';

@@ -1,4 +1,4 @@
-@import '../commom.less';
+@import '../common.less';
 
 .progress-bar {
   width: 100%;
@@ -46,17 +46,19 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
+
     /* 条纹颜色：在当前进度条底色上叠加深色条纹 */
     background-image: linear-gradient(
       45deg,
-      rgba(0, 0, 0, 0.15) 25%,
+      rgba(0, 0, 0, 15%) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(0, 0, 0, 0.15) 50%,
-      rgba(0, 0, 0, 0.15) 75%,
+      rgba(0, 0, 0, 15%) 50%,
+      rgba(0, 0, 0, 15%) 75%,
       transparent 75%,
       transparent 100%
     );
+
     /* 一个周期：横向 40px，纵向 40px；和 keyframes 配合 */
     background-size: 40px 40px;
     background-repeat: repeat;

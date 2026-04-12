@@ -1,5 +1,5 @@
 ---
-title: 操作按钮
+title: 按钮
 toc: content
 order: 1
 group:
@@ -7,12 +7,12 @@ group:
   order: 0
 ---
 
-# 操作按钮
+# 按钮
 
 ## 示例
 
-<code src="./demo/base1.tsx">表格操作</code>
+<code src="./demo/base1.tsx">操作栏按钮</code>
 
-<code src="./demo/base3.tsx">带权限</code>
+<code src="./demo/base2.tsx">权限按钮</code>
 
-<code src="./demo/base2.tsx">功能按钮</code>
+<code src="./demo/base3.tsx">其他</code>

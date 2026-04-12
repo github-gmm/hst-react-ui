@@ -1,6 +1,6 @@
 import { ProColumns } from '@ant-design/pro-components';
 import { Button, Space } from 'antd';
-import { NavigationBar, PageContainer, TableList } from 'hst-react-ui';
+import { NavigationBar, PageContainer, TableList, TabList } from 'hst-react-ui';
 import React from 'react';
 
 export default () => {
@@ -18,18 +18,44 @@ export default () => {
   ];
   return (
     <PageContainer height="500px">
-      <NavigationBar
-        items={[{ title: '一级菜单' }, { title: '二级菜单' }]}
+      <NavigationBar items={[{ title: '一级菜单' }, { title: '二级菜单' }]} />
+      <TabList
+        tabStyle="card"
+        items={[
+          {
+            label: '标签1',
+            value: '1',
+          },
+          {
+            label: '标签2',
+            value: '2',
+          },
+        ]}
+      />
+      <TableList
+        columns={columns}
+        dataSource={[{}, {}, {}, {}, {}, {}, {}, {}, {}]}
+        title={
+          <TabList
+            tabStyle="line"
+            items={[
+              {
+                label: '处理中',
+                value: '1',
+              },
+              {
+                label: '已结束',
+                value: '2',
+              },
+            ]}
+          />
+        }
         extra={
           <Space>
             <Button type="primary">一级按钮</Button>
             <Button>二级按钮</Button>
           </Space>
         }
-      />
-      <TableList
-        columns={columns}
-        dataSource={[{}, {}, {}, {}, {}, {}, {}, {}, {}]}
       />
     </PageContainer>
   );

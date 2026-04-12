@@ -5,19 +5,21 @@ import React from 'react';
 export default () => {
   return (
     <Space>
-      <OptionButton type="main" size="small" premCode="HS:CRM:VA:ADD">
+      <OptionButton>空白</OptionButton>
+      <OptionButton type="primary">主按钮</OptionButton>
+      <OptionButton optionType="main" primary>
         main
       </OptionButton>
-      <OptionButton type="info" size="small" premCode="HS:CRM:VA:ADD">
+      <OptionButton optionType="info" primary>
         info
       </OptionButton>
-      <OptionButton type="success" size="small" premCode="HS:CRM:VA:ADD">
+      <OptionButton optionType="success" primary>
         success
       </OptionButton>
-      <OptionButton type="error" size="small" premCode="HS:CRM:VA:ADD">
+      <OptionButton optionType="error" primary>
         error
       </OptionButton>
-      <OptionButton type="waring" size="small" premCode="HS:CRM:VA:ADD">
+      <OptionButton optionType="waring" primary>
         waring
       </OptionButton>
     </Space>
