@@ -1,10 +1,10 @@
 ---
 title: 字段展示
 toc: content
-order: 1
+order: 2
 group:
   title: 数据展示
-  order: 1
+  order: 2
 ---
 
 # 字段展示

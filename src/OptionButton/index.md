@@ -1,10 +1,10 @@
 ---
 title: 按钮
 toc: content
-order: 1
+order: 2
 group:
   title: 基础
-  order: 0
+  order: 2
 ---
 
 # 按钮

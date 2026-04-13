@@ -8,11 +8,14 @@ export interface ILovProps extends Omit<ProFormItemProps, 'options'> {
     label: string;
     value: string | number;
     disabled?: boolean; // 不可选择
+    otherField?: Record<string, any>;
   }[];
   /** 多选 */
   multiple?: boolean;
   /** 可搜索 */
   search?: boolean;
+  /** 可监听 */
+  onChange?: (value: string, option: any) => void;
 }
 
 const Lov = (props: ILovProps) => {
@@ -26,6 +29,7 @@ const Lov = (props: ILovProps) => {
     required,
     item,
     hidden,
+    onChange = () => {},
     ...rest
   } = props;
 
@@ -50,6 +54,7 @@ const Lov = (props: ILovProps) => {
           mode: multiple ? 'multiple' : undefined,
           showSearch: search,
           filterOption: search,
+          onChange: onChange,
         }}
         rules={[requiredProps, ...rules]}
       />

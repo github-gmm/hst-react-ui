@@ -24,7 +24,7 @@ export default () => {
           ]}
           required
         />
-        <Fields.I18nTextArea
+        <Fields.I18nTextarea
           label="多语言2"
           name="text"
           langConfig={[
@@ -63,7 +63,7 @@ export default () => {
           ]}
           required
         />
-        <Fields.I18nTextArea
+        <Fields.I18nTextarea
           layout="horizontal"
           label="多语言2"
           name="text1"

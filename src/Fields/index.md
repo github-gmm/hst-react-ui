@@ -1,7 +1,7 @@
 ---
 title: 表单控件
 toc: content
-order: 1
+order: 2
 group:
   title: 数据录入
   order: 2

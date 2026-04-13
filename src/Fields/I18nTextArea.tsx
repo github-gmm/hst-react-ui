@@ -6,7 +6,7 @@ import Textarea, { ITextareaProps } from './Textarea';
 import './field.less';
 import './sty/i18nText.less';
 
-export interface I18nTextAreaProps {
+export interface I18nTextareaProps {
   /** 布局 */
   layout?: 'vertical' | 'horizontal';
   name: string;
@@ -21,7 +21,7 @@ export interface I18nTextAreaProps {
     label: string;
   }[];
 }
-const I18nTextArea = (props: I18nTextAreaProps) => {
+const I18nTextarea = (props: I18nTextareaProps) => {
   const {
     layout = 'vertical',
     className = '',
@@ -82,4 +82,4 @@ const I18nTextArea = (props: I18nTextAreaProps) => {
   );
 };
 
-export default I18nTextArea;
+export default I18nTextarea;

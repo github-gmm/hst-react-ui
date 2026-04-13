@@ -3,7 +3,7 @@ import DatePicker from './DatePicker';
 import DateRangePicker from './DateRangePicker';
 import Digit from './Digit';
 import I18nText from './I18nText';
-import I18nTextArea from './I18nTextArea';
+import I18nTextarea from './I18nTextarea';
 import Lov from './Lov';
 import Radio from './Radio';
 import Select from './Select';
@@ -23,7 +23,7 @@ export default {
   UploadImage,
   UploadFile,
   I18nText,
-  I18nTextArea,
+  I18nTextarea,
   DatePicker,
   DateRangePicker,
 };

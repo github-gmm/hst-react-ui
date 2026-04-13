@@ -1,7 +1,7 @@
 ---
 title: 进度条
 toc: content
-order: 1
+order: 2
 group:
   title: 反馈
   order: 3
