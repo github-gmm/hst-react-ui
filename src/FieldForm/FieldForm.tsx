@@ -20,6 +20,7 @@ const FieldForm = (props: IFieldFormProps) => {
     formRef,
     style,
     children,
+    initialValues,
     setDependencies = () => {},
     ...rest
   } = props;
@@ -33,10 +34,8 @@ const FieldForm = (props: IFieldFormProps) => {
   );
 
   useEffect(() => {
-    return () => {
-      setDependencies(undefined as unknown as Record<string, any>);
-    };
-  }, []);
+    setDependencies(initialValues as any);
+  }, [initialValues]);
 
   return (
     <ProForm
@@ -46,6 +45,7 @@ const FieldForm = (props: IFieldFormProps) => {
       colon={colon}
       layout={layout}
       labelAlign={labelAlign}
+      initialValues={initialValues}
       className={'field-form'}
       style={formStyle as React.CSSProperties}
       onValuesChange={(_, values) => {

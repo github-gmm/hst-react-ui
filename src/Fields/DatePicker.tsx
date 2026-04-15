@@ -15,6 +15,8 @@ export interface IDatePickerProps extends ProFormItemProps {
   isShowTime?: boolean;
   /** 日期格式化 */
   formatType?: string;
+  /** 不展示 */
+  hide?: boolean;
 }
 
 const DateText = (props: { children: React.ReactNode }) => {
@@ -73,6 +75,7 @@ const DatePicker = (props: IDatePickerProps) => {
   const {
     rules = [],
     className = '',
+    hide = false,
     isShowTime,
     label,
     required,
@@ -89,23 +92,25 @@ const DatePicker = (props: IDatePickerProps) => {
   };
 
   return (
-    <div
-      className={`common-field ${className}`}
-      style={{ display: hidden ? 'none' : undefined }}
-    >
-      <ProFormDatePicker
-        {...rest}
-        label={label}
-        fieldProps={{
-          ...rest.fieldProps,
-          placeholder: `${label}`,
-          presets: Presets,
-          showTime: isShowTime,
-          format: formatType,
-        }}
-        rules={[requiredProps, ...rules]}
-      />
-    </div>
+    !hide && (
+      <div
+        className={`common-field ${className}`}
+        style={{ display: hidden ? 'none' : undefined }}
+      >
+        <ProFormDatePicker
+          {...rest}
+          label={label}
+          fieldProps={{
+            ...rest.fieldProps,
+            placeholder: `${label}`,
+            presets: Presets,
+            showTime: isShowTime,
+            format: formatType,
+          }}
+          rules={[requiredProps, ...rules]}
+        />
+      </div>
+    )
   );
 };
 

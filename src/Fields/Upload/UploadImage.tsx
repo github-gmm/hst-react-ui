@@ -28,6 +28,7 @@ export interface IUploadImageProps extends Omit<ProFormItemProps, 'accept'> {
   size?: number; // 图片大小
   ratio?: number; // 图片宽高比
   imgSize?: { width: number; height: number }; // 图片宽高像素
+  hide?: boolean;
   onChange?: (fileList: FileType[]) => void;
   customOnUpload: (file: File) => Promise<FileType[]>;
 }
@@ -42,6 +43,7 @@ const UploadImage = (props: IUploadImageProps) => {
     className = '',
     initFileList = [],
     children = <Button icon={<UploadOutlined />}>上传</Button>,
+    hide = false,
     label,
     required,
     ratio,
@@ -116,35 +118,37 @@ const UploadImage = (props: IUploadImageProps) => {
   }, [fileList]);
 
   return (
-    <div
-      className={`common-field ${className}`}
-      style={{ display: hidden ? 'none' : undefined }}
-    >
-      <ProForm.Item {...rest} label={label} rules={[requiredProps]}>
-        {fileList.length < max && (
-          <Spin spinning={loading}>
-            <Upload fileList={[]} beforeUpload={beforeUpload}>
-              <div
-                className={[
-                  'upload-node',
-                  fileList.length > 0 ? 'upload-node-length' : '',
-                ].join(' ')}
-              >
-                {children}
-              </div>
-            </Upload>
-          </Spin>
-        )}
+    !hide && (
+      <div
+        className={`common-field ${className}`}
+        style={{ display: hidden ? 'none' : undefined }}
+      >
+        <ProForm.Item {...rest} label={label} rules={[requiredProps]}>
+          {fileList.length < max && (
+            <Spin spinning={loading}>
+              <Upload fileList={[]} beforeUpload={beforeUpload}>
+                <div
+                  className={[
+                    'upload-node',
+                    fileList.length > 0 ? 'upload-node-length' : '',
+                  ].join(' ')}
+                >
+                  {children}
+                </div>
+              </Upload>
+            </Spin>
+          )}
 
-        <ImageView
-          fileList={fileList}
-          showDelete
-          handleDelete={(_i) => {
-            setFileList(fileList.filter((_, index) => index !== _i));
-          }}
-        />
-      </ProForm.Item>
-    </div>
+          <ImageView
+            fileList={fileList}
+            showDelete
+            handleDelete={(_i) => {
+              setFileList(fileList.filter((_, index) => index !== _i));
+            }}
+          />
+        </ProForm.Item>
+      </div>
+    )
   );
 };
 

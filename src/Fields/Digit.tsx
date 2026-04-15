@@ -17,6 +17,8 @@ export interface INumberProps
   max?: number;
   /** 自定义 */
   suffix?: React.ReactNode;
+  /** 不展示 */
+  hide?: boolean;
   /** 可监听 */
   onChange?: (value: string) => void;
 }
@@ -28,6 +30,7 @@ const Digit = (props: INumberProps) => {
     className = '',
     rules = [],
     placeholder = '',
+    hide = false,
     suffix,
     label,
     required,
@@ -152,30 +155,33 @@ const Digit = (props: INumberProps) => {
   const { run: onChangeDebounce } = useDebounceFn(onChange, { wait: 500 });
 
   return (
-    <div
-      className={`common-field ${className}`}
-      style={{ display: hidden ? 'none' : undefined }}
-    >
-      <ProFormText
-        {...rest}
-        label={label}
-        getValueFromEvent={getValueFromEvent}
-        fieldProps={{
-          ...rest?.fieldProps,
-          placeholder:
-            (placeholder as string) || (typeof label === 'string' ? label : ''),
-          onChange: (e) => {
-            onChangeDebounce(`${e.target.value}`);
-          },
-          suffix: suffix,
-        }}
-        rules={
-          [requiredRule, rangeRule, ...rules].filter(
-            Boolean,
-          ) as ProFormItemProps['rules']
-        }
-      />
-    </div>
+    !hide && (
+      <div
+        className={`common-field ${className}`}
+        style={{ display: hidden ? 'none' : undefined }}
+      >
+        <ProFormText
+          {...rest}
+          label={label}
+          getValueFromEvent={getValueFromEvent}
+          fieldProps={{
+            ...rest?.fieldProps,
+            placeholder:
+              (placeholder as string) ||
+              (typeof label === 'string' ? label : ''),
+            onChange: (e) => {
+              onChangeDebounce(`${e.target.value}`);
+            },
+            suffix: suffix,
+          }}
+          rules={
+            [requiredRule, rangeRule, ...rules].filter(
+              Boolean,
+            ) as ProFormItemProps['rules']
+          }
+        />
+      </div>
+    )
   );
 };
 

@@ -9,6 +9,8 @@ export interface ITextareaProps
   max?: number;
   /** 是否展示长度: 默认打开 */
   isShowCount?: boolean;
+  /** 不展示 */
+  hide?: boolean;
 }
 
 const Textarea = (props: ITextareaProps) => {
@@ -18,6 +20,7 @@ const Textarea = (props: ITextareaProps) => {
     placeholder = '',
     rules = [],
     isShowCount = true,
+    hide = false,
     required,
     hidden,
     label,
@@ -30,31 +33,34 @@ const Textarea = (props: ITextareaProps) => {
   };
 
   return (
-    <div
-      className={`common-field ${className}`}
-      style={{ display: hidden ? 'none' : undefined }}
-    >
-      <ProFormTextArea
-        {...rest}
-        label={label}
-        fieldProps={{
-          ...rest.fieldProps,
-          maxLength: max,
-          showCount: isShowCount,
-          placeholder:
-            (placeholder as string) || (typeof label === 'string' ? label : ''),
-        }}
-        getValueFromEvent={(e: any) => {
-          const raw = e?.target?.value ?? '';
-          let value = raw.replace(/^\s+|\s+$/g, '');
-          if (value.length > max) {
-            value = value.slice(0, max);
-          }
-          return value;
-        }}
-        rules={[requiredProps, ...rules]}
-      />
-    </div>
+    !hide && (
+      <div
+        className={`common-field ${className}`}
+        style={{ display: hidden ? 'none' : undefined }}
+      >
+        <ProFormTextArea
+          {...rest}
+          label={label}
+          fieldProps={{
+            ...rest.fieldProps,
+            maxLength: max,
+            showCount: isShowCount,
+            placeholder:
+              (placeholder as string) ||
+              (typeof label === 'string' ? label : ''),
+          }}
+          getValueFromEvent={(e: any) => {
+            const raw = e?.target?.value ?? '';
+            let value = raw.replace(/^\s+|\s+$/g, '');
+            if (value.length > max) {
+              value = value.slice(0, max);
+            }
+            return value;
+          }}
+          rules={[requiredProps, ...rules]}
+        />
+      </div>
+    )
   );
 };
 

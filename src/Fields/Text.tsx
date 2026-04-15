@@ -18,6 +18,8 @@ export interface ITextProps
   isSearchLoading?: boolean;
   /** 是否展示长度: 默认打开 */
   isShowCount?: boolean;
+  /** 不展示 */
+  hide?: boolean;
   /** 可搜索 */
   onSearch?: (value: string) => void;
   /** 可监听 */
@@ -36,6 +38,7 @@ const Text = (props: ITextProps) => {
     autoToUpperCase = false,
     autoToLowerCase = false,
     isShowCount = true,
+    hide = false,
     required,
     hidden,
     label,
@@ -52,56 +55,58 @@ const Text = (props: ITextProps) => {
   const { run: onChangeDebounce } = useDebounceFn(onChange, { wait: 500 });
 
   return (
-    <div
-      className={`common-field ${className}`}
-      style={{ display: hidden ? 'none' : undefined }}
-    >
-      <ProForm.Item label={label} required={required}>
-        <div className="common-field-value">
-          <ProFormText
-            {...rest}
-            hidden={hidden}
-            fieldProps={{
-              ...rest.fieldProps,
-              showCount: isShowCount,
-              maxLength: max,
-              placeholder:
-                (placeholder as string) ||
-                (typeof label === 'string' ? label : ''),
-              onChange: (e) => {
-                textRef.current = e.target.value;
-                onChangeDebounce(e.target.value);
-              },
-            }}
-            getValueFromEvent={(e) => {
-              const raw = e?.target?.value ?? '';
-              let value = raw.replace(/^\s+|\s+$/g, '');
-              if (autoToUpperCase) {
-                value = value.toUpperCase();
-              }
-              if (autoToLowerCase) {
-                value = value.toLowerCase();
-              }
-              if (value.length > max) {
-                value = value.slice(0, max);
-              }
-              return value;
-            }}
-            rules={[requiredProps, ...rules]}
-          />
-          {onSearch && (
-            <Button
-              type="primary"
-              onClick={() => {
-                if (!isSearchLoading) onSearch(textRef.current);
+    !hide && (
+      <div
+        className={`common-field ${className}`}
+        style={{ display: hidden ? 'none' : undefined }}
+      >
+        <ProForm.Item label={label} required={required}>
+          <div className="common-field-value">
+            <ProFormText
+              {...rest}
+              hidden={hidden}
+              fieldProps={{
+                ...rest.fieldProps,
+                showCount: isShowCount,
+                maxLength: max,
+                placeholder:
+                  (placeholder as string) ||
+                  (typeof label === 'string' ? label : ''),
+                onChange: (e) => {
+                  textRef.current = e.target.value;
+                  onChangeDebounce(e.target.value);
+                },
               }}
-            >
-              {isSearchLoading ? <LoadingOutlined /> : <SearchOutlined />}
-            </Button>
-          )}
-        </div>
-      </ProForm.Item>
-    </div>
+              getValueFromEvent={(e) => {
+                const raw = e?.target?.value ?? '';
+                let value = raw.replace(/^\s+|\s+$/g, '');
+                if (autoToUpperCase) {
+                  value = value.toUpperCase();
+                }
+                if (autoToLowerCase) {
+                  value = value.toLowerCase();
+                }
+                if (value.length > max) {
+                  value = value.slice(0, max);
+                }
+                return value;
+              }}
+              rules={[requiredProps, ...rules]}
+            />
+            {onSearch && (
+              <Button
+                type="primary"
+                onClick={() => {
+                  if (!isSearchLoading) onSearch(textRef.current);
+                }}
+              >
+                {isSearchLoading ? <LoadingOutlined /> : <SearchOutlined />}
+              </Button>
+            )}
+          </div>
+        </ProForm.Item>
+      </div>
+    )
   );
 };
 

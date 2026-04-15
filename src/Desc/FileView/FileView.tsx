@@ -41,7 +41,7 @@ const FileView = (props: IFileViewProps) => {
             </div>
           )}
 
-          <TextareaView hideLabel maxLines={1} value={item.name} />
+          <TextareaView hideLabel maxLines={1} value={item.name} wrap />
           {showDownload && (
             <div className={'download-icon'}>
               <DownloadOutlined />

@@ -17,6 +17,8 @@ export interface IDateRangePickerProps extends ProFormItemProps {
   isShowTime?: boolean;
   /** 日期格式化 */
   formatType?: string;
+  /** 不展示 */
+  hide?: boolean;
 }
 
 const DateText = (props: { children: React.ReactNode }) => {
@@ -106,6 +108,7 @@ const DateRangePicker = (props: IDateRangePickerProps) => {
   const {
     rules = [],
     className = '',
+    hide = false,
     isShowTime,
     label,
     required,
@@ -122,22 +125,24 @@ const DateRangePicker = (props: IDateRangePickerProps) => {
   };
 
   return (
-    <div
-      className={`common-field ${className}`}
-      style={{ display: hidden ? 'none' : undefined }}
-    >
-      <ProFormDateRangePicker
-        {...rest}
-        label={label}
-        fieldProps={{
-          ...rest.fieldProps,
-          presets: RangePresets,
-          showTime: isShowTime,
-          format: formatType,
-        }}
-        rules={[requiredProps, ...rules]}
-      />
-    </div>
+    !hide && (
+      <div
+        className={`common-field ${className}`}
+        style={{ display: hidden ? 'none' : undefined }}
+      >
+        <ProFormDateRangePicker
+          {...rest}
+          label={label}
+          fieldProps={{
+            ...rest.fieldProps,
+            presets: RangePresets,
+            showTime: isShowTime,
+            format: formatType,
+          }}
+          rules={[requiredProps, ...rules]}
+        />
+      </div>
+    )
   );
 };
 

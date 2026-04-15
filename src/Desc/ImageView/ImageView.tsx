@@ -34,7 +34,7 @@ const ImageView = (props: IImageViewProps) => {
         <div key={item.name} className={'upload-images-item'}>
           <Image src={item.url} height={24} width={24} />
           {showName && (
-            <TextareaView hideLabel maxLines={1} value={item.name} />
+            <TextareaView hideLabel maxLines={1} value={item.name} wrap />
           )}
           {showDownload && (
             <div className={'download-icon'}>

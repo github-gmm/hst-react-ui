@@ -11,18 +11,16 @@ import useForm from 'hst-react-ui/hooks/useForm';
 import React from 'react';
 
 export default () => {
-  const {
-    fieldFormRef,
-    validateFields,
-    dependencyValues,
-    setDependencyValues,
-  } = useForm();
+  const { fieldFormRef, validateFields } = useForm();
 
   const submit = () => {
     validateFields().then((val) => {
       console.log(val);
     });
   };
+
+  const init = {};
+
   return (
     <PageContainer height="500px">
       <NavigationBar
@@ -38,7 +36,14 @@ export default () => {
         ]}
       />
       <CompContainer>
-        <FieldForm formRef={fieldFormRef} setDependencies={setDependencyValues}>
+        <FieldForm
+          formRef={fieldFormRef}
+          initialValues={init}
+          style={{
+            width: '70%',
+          }}
+          labelAlign="left"
+        >
           <Fields.Text
             label="纯文本"
             name="text1"
@@ -48,6 +53,7 @@ export default () => {
               console.log('查询纯文本', value);
             }}
           />
+          <Fields.Text hide={true} label="纯文本1" name="text2" required />
           <Fields.Lov
             label="枚举"
             name="currency"
@@ -62,12 +68,50 @@ export default () => {
               },
             ]}
           />
-          <Fields.Digit
-            label="数字"
-            name="text3"
-            min={1}
-            max={100}
-            suffix={dependencyValues?.currency}
+          <Fields.Digit label="数字" name="text3" min={1} max={100} />
+          <Fields.UploadFile
+            label="文件"
+            name="path"
+            customOnUpload={async () => {
+              return [
+                {
+                  url: '',
+                  name: '',
+                },
+              ];
+            }}
+            initFileList={[
+              {
+                url: '111',
+                name: '111',
+              },
+            ]}
+            onChange={(fileList) => {
+              const [file] = fileList;
+              fieldFormRef.current?.setFieldValue('path', file.url);
+            }}
+          />
+          <Fields.UploadImage
+            label="文件"
+            name="path1"
+            customOnUpload={async () => {
+              return [
+                {
+                  url: '',
+                  name: '',
+                },
+              ];
+            }}
+            initFileList={[
+              {
+                url: '111',
+                name: '111',
+              },
+            ]}
+            onChange={(fileList) => {
+              const [file] = fileList;
+              fieldFormRef.current?.setFieldValue('path1', file.url);
+            }}
           />
         </FieldForm>
         <Flex
