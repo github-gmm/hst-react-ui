@@ -47,16 +47,21 @@ export default () => {
       fixed: 'right',
       render: () => (
         <Space>
-          <OptionButton optionType="main">详情页</OptionButton>
-          {/* <OptionButton optionType="main">详情弹窗</OptionButton> */}
+          <OptionButton optionType="main" size="small">
+            详情页
+          </OptionButton>
 
-          <OptionButton optionType="info">编辑页</OptionButton>
-          {/* <OptionButton optionType="info">编辑弹窗</OptionButton> */}
+          <OptionButton optionType="info" size="small">
+            编辑页
+          </OptionButton>
 
-          <OptionButton optionType="waring">禁用</OptionButton>
-          {/* <OptionButton optionType="success">启用</OptionButton> */}
+          <OptionButton optionType="waring" size="small">
+            禁用
+          </OptionButton>
 
-          <OptionButton optionType="error">删除</OptionButton>
+          <OptionButton optionType="error" size="small">
+            删除
+          </OptionButton>
         </Space>
       ),
     },

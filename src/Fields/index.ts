@@ -23,7 +23,7 @@ export default {
   UploadImage,
   UploadFile,
   I18nText,
-  I18nTextarea,
   DatePicker,
   DateRangePicker,
+  I18nTextarea,
 };
