@@ -1,8 +1,12 @@
-import './theme.less';
+import './_styles/ant.less';
+import './_styles/scrollbar.less';
+import './_styles/theme.less';
 
 export * from './DateUtils';
 
 export * from './NumberUtils';
+
+export { CompContainer, PageContainer } from './Container';
 
 export { default as OptionButton } from './OptionButton';
 
@@ -13,8 +17,6 @@ export { default as ModalPopup } from './DragModalPopup';
 export { default as DrawerPopup } from './DrawerPopup';
 
 export { default as TableList } from './TableList';
-
-export { CompContainer, PageContainer } from './Container';
 
 export { default as NavigationBar } from './NavigationBar';
 

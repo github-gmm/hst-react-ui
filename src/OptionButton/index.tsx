@@ -15,6 +15,8 @@ interface IOptionButtonProps extends ButtonProps {
   children?: React.ReactNode;
   /** 权限码 */
   premCode?: string;
+  /** 隐藏 */
+  hide?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -24,6 +26,7 @@ export const OptionButton = (props: IOptionButtonProps) => {
   const {
     // premCode,
     optionType,
+    hide = false,
     primary = !props.optionType,
     children,
     style,
@@ -60,13 +63,15 @@ export const OptionButton = (props: IOptionButtonProps) => {
     : '';
 
   return (
-    <Button
-      {...restProps}
-      className={[btnClassName, className].join(' ')}
-      style={buttonStyle as React.CSSProperties}
-    >
-      {children}
-    </Button>
+    !hide && (
+      <Button
+        {...restProps}
+        className={[btnClassName, className].join(' ')}
+        style={buttonStyle as React.CSSProperties}
+      >
+        {children}
+      </Button>
+    )
   );
 };
 

@@ -1,5 +1,5 @@
 import { Button, Space } from 'antd';
-import usePopup from 'hst-react-ui/hooks/usePopup';
+import usePopup from 'hst-react-ui/_hooks/usePopup';
 import React from 'react';
 
 export default () => {

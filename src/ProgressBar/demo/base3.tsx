@@ -1,6 +1,6 @@
 import { Button, Space } from 'antd';
 import { ProgressBar } from 'hst-react-ui';
-import useTiming from 'hst-react-ui/hooks/useTiming';
+import useTiming from 'hst-react-ui/_hooks/useTiming';
 import React from 'react';
 
 export default () => {

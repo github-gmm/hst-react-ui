@@ -8,7 +8,14 @@ const useTable = () => {
   const [rowKeys, setRowKeys] = useState<React.Key[]>([]);
   const [rowList, setRowList] = useState<Record<string, any>[]>([]);
 
-  return { tableFormRef, tableActionsRef, rowKeys, rowList, setRowKeys, setRowList };
+  return {
+    tableFormRef,
+    tableActionsRef,
+    rowKeys,
+    rowList,
+    setRowKeys,
+    setRowList,
+  };
 };
 
 export default useTable;

@@ -7,7 +7,7 @@ import {
   OptionButton,
   PageContainer,
 } from 'hst-react-ui';
-import useForm from 'hst-react-ui/hooks/useForm';
+import useForm from 'hst-react-ui/_hooks/useForm';
 import React from 'react';
 
 export default () => {
@@ -87,11 +87,11 @@ export default () => {
               },
             ]}
             onChange={(fileList) => {
-              const [file] = fileList;
-              fieldFormRef.current?.setFieldValue('path', file.url);
+              const url = fileList?.length > 0 ? fileList[0]?.url : '';
+              fieldFormRef.current?.setFieldValue('path1', url || '');
             }}
           />
-          <Fields.UploadImage
+          <Fields.UploadFile
             label="文件"
             name="path1"
             customOnUpload={async () => {
@@ -109,8 +109,8 @@ export default () => {
               },
             ]}
             onChange={(fileList) => {
-              const [file] = fileList;
-              fieldFormRef.current?.setFieldValue('path1', file.url);
+              const url = fileList?.length > 0 ? fileList[0]?.url : '';
+              fieldFormRef.current?.setFieldValue('path1', url || '');
             }}
           />
         </FieldForm>
