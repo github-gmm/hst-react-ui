@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 import React, { useMemo } from 'react';
-import './PageContainer.less';
+import './CompContainer.less';
 
 export interface IVaPageProps {
   /** 自定义样式 */
