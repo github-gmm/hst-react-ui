@@ -9,8 +9,6 @@ import themeBtn from './themeBtn';
 interface IOptionButtonProps extends ButtonProps {
   /** 按钮颜色（文字和边框颜色） main: 主要、success: 成功、error: 错误、info: 信息、waring: 警告  */
   optionType?: 'main' | 'success' | 'error' | 'info' | 'waring';
-  /** 常规 */
-  primary?: boolean;
   /** 子元素 */
   children?: React.ReactNode;
   /** 权限码 */
@@ -27,16 +25,11 @@ export const OptionButton = (props: IOptionButtonProps) => {
     // premCode,
     optionType,
     hide = false,
-    primary = !props.optionType,
     children,
     style,
     className,
     ...restProps
   } = props;
-
-  // const { existCode } = useModel('permission');
-  // const open = false;
-  // if (premCode && !existCode(premCode) && !isDev(APP_ENV) && open) return null;
 
   const buttonStyle = useMemo(() => {
     const colorMap = optionType
@@ -58,9 +51,14 @@ export const OptionButton = (props: IOptionButtonProps) => {
     };
   }, [optionType, style]);
   const isOption = !!optionType;
+  const primary = !optionType;
   const btnClassName = isOption
     ? `option${primary ? '-primary-' : '-'}button`
     : '';
+
+  // const { existCode } = useModel('permission');
+  // const open = false;
+  // if (premCode && !existCode(premCode) && !isDev(APP_ENV) && open) return null;
 
   return (
     !hide && (

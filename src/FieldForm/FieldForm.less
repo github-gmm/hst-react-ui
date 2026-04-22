@@ -2,6 +2,7 @@
 
 .field-form {
   --form-label-width: 120px;
+  --form-field-width: 450px;
 
   display: flex;
   flex-direction: column;
@@ -11,5 +12,9 @@
   .@{layout-prefix}-form-item-label {
     width: var(--form-label-width);
     font-weight: 600;
+  }
+
+  .common-field {
+    width: var(--form-field-width);
   }
 }

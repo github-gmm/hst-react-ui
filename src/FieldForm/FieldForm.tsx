@@ -8,8 +8,9 @@ export interface IFieldFormProps
   extends Omit<ProFormProps, 'submitter' | 'onValuesChange'> {
   labelWith?: number;
   children?: React.ReactNode;
-  setDependencies?: (values: Record<string, any>) => void;
   column?: number;
+  block?: boolean;
+  setDependencies?: (values: Record<string, any>) => void;
 }
 
 const FieldForm = (props: IFieldFormProps) => {
@@ -23,6 +24,7 @@ const FieldForm = (props: IFieldFormProps) => {
     children,
     initialValues,
     column = 1,
+    block = true,
     setDependencies = () => {},
     ...rest
   } = props;
@@ -30,9 +32,10 @@ const FieldForm = (props: IFieldFormProps) => {
   const formStyle = useMemo(
     () => ({
       '--form-label-width': labelWith + 'px',
+      '--form-field-width': block === true ? '100%' : '450px',
       ...style,
     }),
-    [labelWith, style],
+    [labelWith, style, block],
   );
 
   useEffect(() => {
