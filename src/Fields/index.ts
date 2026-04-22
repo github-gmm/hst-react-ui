@@ -4,6 +4,8 @@ import DateRangePicker from './DateRangePicker';
 import Digit from './Digit';
 import I18nText from './I18nText';
 import I18nTextarea from './I18nTextarea';
+import Json from './Json';
+import Link from './Link';
 import Lov from './Lov';
 import Radio from './Radio';
 import Select from './Select';
@@ -26,4 +28,6 @@ export default {
   DatePicker,
   DateRangePicker,
   I18nTextarea,
+  Link,
+  Json,
 };

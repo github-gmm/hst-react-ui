@@ -2,13 +2,13 @@ import type { ProFormItemProps } from '@ant-design/pro-components';
 import { ProFormDateRangePicker } from '@ant-design/pro-components';
 import { RangePickerProps } from 'antd/es/date-picker';
 import dayjs from 'dayjs';
+import React from 'react';
 import {
   getTimeByDay,
   getTimeByMonth,
   getTimeByYear,
   getToday,
-} from 'hst-react-ui/DateUtils';
-import React from 'react';
+} from '../DateUtils';
 import './field.less';
 
 export interface IDateRangePickerProps extends ProFormItemProps {
@@ -82,7 +82,7 @@ export const RangePresets: RangePickerProps['presets'] = [
     ],
   },
   {
-    label: <DateText>未来一月后</DateText>,
+    label: <DateText>未来一月</DateText>,
     value: [
       dayjs(getToday('YYYY-MM-DD')),
       dayjs(getTimeByMonth(1, 'YYYY-MM-DD')),

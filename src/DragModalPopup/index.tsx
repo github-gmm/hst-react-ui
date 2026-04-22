@@ -43,10 +43,10 @@ export interface IModalPopupBaseProps {
   width?: number | string;
   /** 点击遮罩层是否可关闭 */
   maskClosable?: boolean;
-  /** 关闭回调 */
-  onClose?: () => void;
   /** 子元素 */
   children?: ReactNode;
+  /** 关闭回调 */
+  onClose?: () => void;
 }
 
 /** Modal 扩展属性 */
@@ -71,9 +71,9 @@ export const DragModalPopup = (props: IModalPopupModalProps) => {
     contentCenter = false,
     width,
     maskClosable = false,
-    onClose,
     children,
     modalProps,
+    onClose,
   } = props;
 
   const draggleRef = useRef<HTMLDivElement>(null!);

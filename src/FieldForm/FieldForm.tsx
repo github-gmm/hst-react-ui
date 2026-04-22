@@ -9,6 +9,7 @@ export interface IFieldFormProps
   labelWith?: number;
   children?: React.ReactNode;
   setDependencies?: (values: Record<string, any>) => void;
+  column?: number;
 }
 
 const FieldForm = (props: IFieldFormProps) => {
@@ -21,6 +22,7 @@ const FieldForm = (props: IFieldFormProps) => {
     style,
     children,
     initialValues,
+    column = 1,
     setDependencies = () => {},
     ...rest
   } = props;
@@ -52,7 +54,15 @@ const FieldForm = (props: IFieldFormProps) => {
         setDependencies(values);
       }}
     >
-      {children}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${column}, minmax(0, 1fr))`,
+          gap: '10px',
+        }}
+      >
+        {children}
+      </div>
     </ProForm>
   );
 };

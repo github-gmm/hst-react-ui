@@ -1,4 +1,13 @@
-import { NavigationBar, PageContainer, TabList } from 'hst-react-ui';
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  NavigationBar,
+  PageContainer,
+  TabList,
+} from 'hst-react-ui';
 import React from 'react';
 import CompContainer from '../CompContainer';
 
@@ -19,7 +28,13 @@ export default () => {
           },
         ]}
       />
-      <CompContainer>空白页面</CompContainer>
+      <CompContainer>
+        <H1>这是一个标题</H1>
+        <H2>这是一个标题</H2>
+        <H3>这是一个标题</H3>
+        <H4>这是一个标题</H4>
+        <H5>这是一个标题</H5>
+      </CompContainer>
     </PageContainer>
   );
 };

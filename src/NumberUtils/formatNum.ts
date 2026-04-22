@@ -5,6 +5,7 @@ Decimal.set({
   rounding: Decimal.ROUND_HALF_UP, // 默认舍入方式
 });
 
+// 小数位 、 千分位 、 百分数
 type numType = 'Thousands' | 'Precision' | 'Percent';
 
 interface OptionsParams {

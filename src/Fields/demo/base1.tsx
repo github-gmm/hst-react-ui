@@ -4,7 +4,7 @@ import React from 'react';
 export default () => {
   return (
     <div style={{ width: 500 }}>
-      <FieldForm>
+      <FieldForm style={{ width: '300px' }}>
         <Fields.Text
           label="纯文本"
           name="text1"

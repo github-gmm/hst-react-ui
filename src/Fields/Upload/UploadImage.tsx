@@ -10,7 +10,7 @@ import {
   validateFileSize,
   validateFileType,
   validateImageSize,
-} from './utils';
+} from './validate/utils';
 
 interface FileType {
   name: string;

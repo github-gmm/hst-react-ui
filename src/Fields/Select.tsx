@@ -13,6 +13,8 @@ export interface ISelectProps extends Omit<ProFormSelectProps, 'options'> {
   search?: boolean;
   /** 不展示 */
   hide?: boolean;
+  /** 请求间隔 */
+  requestTime?: number;
   /** 请求接口 */
   request: (keyword: string) => Promise<RequestOptionsType[]>;
   /** 可监听 */
@@ -26,6 +28,7 @@ const Select = (props: ISelectProps) => {
     placeholder = '',
     search = false,
     hide = false,
+    requestTime = 500,
     label,
     required,
     hidden,
@@ -49,8 +52,8 @@ const Select = (props: ISelectProps) => {
           {...rest}
           label={label}
           rules={[requiredProps]}
-          debounceTime={500}
           request={request}
+          debounceTime={requestTime}
           fieldProps={{
             ...rest?.fieldProps,
             placeholder:

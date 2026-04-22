@@ -1,12 +1,8 @@
 import type { ProFormItemProps } from '@ant-design/pro-components';
 import { ProFormDatePicker } from '@ant-design/pro-components';
 import dayjs from 'dayjs';
-import {
-  getTimeByDay,
-  getTimeByMonth,
-  getTimeByYear,
-} from 'hst-react-ui/DateUtils';
 import React from 'react';
+import { getTimeByDay, getTimeByMonth, getTimeByYear } from '../DateUtils';
 import './field.less';
 
 export interface IDatePickerProps extends ProFormItemProps {

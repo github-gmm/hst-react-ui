@@ -4,7 +4,11 @@ import { Button, message, Spin, Upload } from 'antd';
 import React, { useEffect, useState } from 'react';
 import FileView from '../../Desc/FileView';
 import './upload.less';
-import { validateFileCount, validateFileSize, validateFileType } from './utils';
+import {
+  validateFileCount,
+  validateFileSize,
+  validateFileType,
+} from './validate/utils';
 
 interface FileType {
   name: string;
@@ -50,7 +54,7 @@ const UploadFile = (props: IUploadFileProps) => {
 
   const requiredProps = {
     required: required,
-    message: `${label}不能为空`,
+    // message: `${label}不能为空`,
   };
 
   const beforeUpload = async (file: File) => {
@@ -76,9 +80,7 @@ const UploadFile = (props: IUploadFileProps) => {
       try {
         const res = await customOnUpload(file);
         setFileList([...fileList, ...res]);
-      } catch (error) {
-        // console.log(error);
-      }
+      } catch (error) {}
     }
 
     setLoading(false);

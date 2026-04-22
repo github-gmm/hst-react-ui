@@ -11,6 +11,8 @@ group:
 
 <code src="./demo/base1.tsx">文本输入框</code>
 
+<code src="./demo/base1_2.tsx">链接框</code>
+
 <code src="./demo/base1_1.tsx">多语言文本输入框</code>
 
 <code src="./demo/base2.tsx">数字输入框</code>

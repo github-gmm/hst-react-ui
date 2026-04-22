@@ -1,8 +1,15 @@
 import { useInterval } from 'ahooks';
 import { useState } from 'react';
 
+interface IProps {
+  /** 搜索超时时间 */
+  searchTimeout?: number;
+}
+
 // 计时器
-const useTiming = () => {
+const useTiming = (props?: IProps) => {
+  const { searchTimeout = 60000 } = props || {};
+
   // 时间
   const [count, setCount] = useState<number>(1);
   // 进度条
@@ -12,21 +19,20 @@ const useTiming = () => {
   useInterval(
     () => {
       setCount((c) => c + 1);
-    },
-    running ? 1000 : undefined,
-  );
 
-  useInterval(
-    () => {
       setPercent((p) => {
-        if (p < 95) {
+        if (p < 50) {
+          return 50;
+        } else if (p < 90) {
+          return p + 10;
+        } else if (p <= 98) {
           return p + 1;
         } else {
-          return 96;
+          return 99;
         }
       });
     },
-    running ? 400 : undefined,
+    searchTimeout / 1000 > count && running ? 1000 : undefined,
   );
 
   // 开始

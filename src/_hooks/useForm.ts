@@ -1,19 +1,21 @@
 import { ProFormInstance } from '@ant-design/pro-components';
 import { useRef, useState } from 'react';
 
+export interface FileType {
+  name: string;
+  url: string;
+}
+
 const useForm = () => {
+  // 图片文件
+  const [fileList, setFileList] = useState<FileType>();
+  // form绑定
   const fieldFormRef = useRef<ProFormInstance>();
-  const [dependencyValues, setDependencyValues] = useState<
-    Record<string, any> | undefined
-  >();
-  const [initValues, setInitValues] = useState<
-    Record<string, any> | undefined
-  >();
 
   const getValues = () => {
     return fieldFormRef.current?.getFieldsValue() || {};
   };
-
+  // 提前校验
   const validateFields = () => {
     return new Promise((resolve, reject) => {
       fieldFormRef.current
@@ -27,12 +29,10 @@ const useForm = () => {
 
   return {
     fieldFormRef,
-    initValues,
-    dependencyValues,
-    setDependencyValues,
-    setInitValues,
+    fileList,
     getValues,
     validateFields,
+    setFileList,
   };
 };
 

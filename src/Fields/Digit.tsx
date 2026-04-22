@@ -1,8 +1,8 @@
 import type { ProFormItemProps } from '@ant-design/pro-components';
 import { ProFormText } from '@ant-design/pro-components';
 import { useDebounceFn } from 'ahooks';
-import { maxNum, minNum } from 'hst-react-ui/NumberUtils';
 import React from 'react';
+import { maxNum, minNum } from '../NumberUtils';
 import './field.less';
 
 export interface INumberProps
