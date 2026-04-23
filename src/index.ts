@@ -6,11 +6,13 @@ export * from './DateUtils';
 
 export * from './NumberUtils';
 
+export * from './OptionTitle';
+
+export { default as SvgIcon } from './Icons';
+
 export { CompContainer, PageContainer } from './Container';
 
 export { default as OptionButton } from './OptionButton';
-
-export * from './OptionTitle';
 
 export { default as ProgressBar } from './ProgressBar';
 
