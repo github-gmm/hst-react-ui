@@ -66,6 +66,7 @@ const TextareaView = (props: ITextareaView) => {
                 className={[
                   'desc-value-textarea',
                   wrap ? 'text-wrap' : '',
+                  maxLines === 1 ? 'single-line' : '',
                 ].join(' ')}
               >
                 {content}

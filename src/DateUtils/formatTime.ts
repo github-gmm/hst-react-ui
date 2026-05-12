@@ -3,12 +3,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { isTime, isTzFormatType, isTzTime } from './compareTime';
-import {
-  getTimeOffset,
-  getTimeOffsetByUtc,
-  getTimeUtcByTzDate,
-  getTimezone,
-} from './getTimeInfo';
+import { getTimeOffset, getTimeOffsetByUtc, getTimeUtcByTzDate, getTimezone } from './getTimeInfo';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -23,10 +18,7 @@ interface OptionsParams {
 const dateTimeFormatType = 'YYYY-MM-DD HH:mm:ss';
 
 // 1、普通日期转普通日期
-export const formatDate = (
-  date: string,
-  formatType: string = dateTimeFormatType,
-) => {
+export const formatDate = (date: string, formatType: string = dateTimeFormatType) => {
   if (!date || !isTime(date)) return date;
 
   return dayjs(date).format(formatType);
@@ -48,11 +40,7 @@ export const formatDateToTz = (date: string, options: OptionsParams) => {
 };
 
 // 3、tz日期转普通日期
-export const formatTzDate = (
-  date: string,
-  formatType: string,
-  options: OptionsParams,
-) => {
+export const formatTzDate = (date: string, formatType: string, options: OptionsParams) => {
   const { timezone, utc } = options;
   if (!date || !isTime(date)) return date;
 
@@ -73,11 +61,7 @@ export const formatTzDateToTz = (date: string) => {
 };
 
 // 格式化日期
-export const formatTime = (
-  date: string,
-  formatType: string,
-  options: OptionsParams = {},
-) => {
+export const formatTime = (date: string, formatType: string, options: OptionsParams = {}) => {
   if (!date || !isTime(date)) return date;
 
   if (isTzTime(date)) {

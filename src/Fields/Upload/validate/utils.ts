@@ -1,3 +1,10 @@
+export const acceptType: any = {
+  image: '图片',
+  excel: '表格',
+  audio: '音频',
+  video: '视频',
+};
+
 export const validateFileCount = (fileCount: number, max: number): boolean => {
   if (max > 0 && fileCount >= max) {
     return false;
@@ -17,11 +24,14 @@ export const validateFileType = (
     const isExcel = file.name.match(/\.(xlsx|xls|csv)$/);
     return !!isExcel;
   } else if (fileType === 'audio') {
-    const isAudio = file.type.startsWith('audio/') || file.name.match(/\.(mp3|wav|m4a|aac|ogg)$/i);
+    const isAudio =
+      file.type.startsWith('audio/') ||
+      file.name.match(/\.(mp3|wav|m4a|aac|ogg)$/i);
     return !!isAudio;
   } else if (fileType === 'video') {
     const isVideo =
-      file.type.startsWith('video/') || file.name.match(/\.(mp4|avi|wmv|mov|flv|mkv)$/i);
+      file.type.startsWith('video/') ||
+      file.name.match(/\.(mp4|avi|wmv|mov|flv|mkv)$/i);
     return !!isVideo;
   }
 
@@ -36,7 +46,10 @@ export const validateFileSize = (file: File, size: number): boolean => {
   return true;
 };
 
-export const validateFileRatio = async (file: File, ratio: number): Promise<boolean> => {
+export const validateFileRatio = async (
+  file: File,
+  ratio: number,
+): Promise<boolean> => {
   const flag = await new Promise<boolean>((resolve) => {
     const img = new Image();
     const url = URL.createObjectURL(file);
@@ -62,7 +75,11 @@ export const validateFileRatio = async (file: File, ratio: number): Promise<bool
   return flag;
 };
 
-export const validateImageSize = (file: File, width: number, height: number) => {
+export const validateImageSize = (
+  file: File,
+  width: number,
+  height: number,
+) => {
   return new Promise<boolean>((resolve) => {
     const img = new Image();
     const url = URL.createObjectURL(file);

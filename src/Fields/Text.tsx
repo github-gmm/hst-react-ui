@@ -60,7 +60,7 @@ const Text = (props: ITextProps) => {
         className={`common-field ${className}`}
         style={{ display: hidden ? 'none' : undefined }}
       >
-        <ProForm.Item label={label} required={required}>
+        <ProForm.Item {...rest} label={label} required={required}>
           <div className="common-field-value">
             <ProFormText
               {...rest}

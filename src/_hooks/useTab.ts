@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const useTab = (key?: string) => {
-  const [tabKey, setTabKey] = useState<string>(key || '');
+const useTab = (key?: string | number) => {
+  const [tabKey, setTabKey] = useState<string | number>(key || '');
 
-  const handleChangeTabKey = (key: string) => {
+  const handleChangeTabKey = (key: string | number) => {
     setTabKey(key);
   };
 

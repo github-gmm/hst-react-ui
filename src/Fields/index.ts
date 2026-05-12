@@ -7,10 +7,12 @@ import I18nTextarea from './I18nTextarea';
 import Json from './Json';
 import Link from './Link';
 import Lov from './Lov';
+import Num from './Num';
 import Radio from './Radio';
 import Select from './Select';
 import Text from './Text';
 import Textarea from './Textarea';
+import UploadField from './Upload/UploadField';
 import UploadFile from './Upload/UploadFile';
 import UploadImage from './Upload/UploadImage';
 
@@ -20,6 +22,7 @@ export default {
   Radio,
   Checkbox,
   Digit,
+  Num,
   Lov,
   Select,
   UploadImage,
@@ -30,4 +33,5 @@ export default {
   I18nTextarea,
   Link,
   Json,
+  UploadField,
 };

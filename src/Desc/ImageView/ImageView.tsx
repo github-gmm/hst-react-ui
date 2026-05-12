@@ -6,33 +6,46 @@ import './ImageView.less';
 
 export interface IImageViewProps {
   fileList: {
-    name: string;
-    url: string;
+    name?: string;
+    url?: string;
   }[];
   showName?: boolean;
   showDelete?: boolean;
   showDownload?: boolean;
   className?: string;
-  borderd?: boolean;
+  bordered?: boolean;
   handleDelete?: (index: number) => void;
 }
+
+export const viewPrefix = '/crm/attachment/preview?path=';
 
 const ImageView = (props: IImageViewProps) => {
   const {
     fileList,
     showName = true,
-    borderd = true,
+    bordered = true,
     showDelete = false,
     showDownload = false,
     className = '',
     handleDelete,
   } = props;
 
+  const isUrl = (str: string) => {
+    const reg = /^(https?:\/\/)([\w-]+(\.[\w-]+)+)(:\d+)?(\/[^\s]*)?$/i;
+    return reg.test(str);
+  };
+
+  const formatUrl = (url: string) => {
+    if (isUrl(url)) return url;
+
+    return `${viewPrefix}${url}`;
+  };
+
   return (
-    <div className={`upload-images ${className} ${borderd && 'borderd'}`}>
+    <div className={`upload-images ${className} ${bordered && 'bordered'}`}>
       {fileList.map((item, _i) => (
         <div key={item.name} className={'upload-images-item'}>
-          <Image src={item.url} height={24} width={24} />
+          <Image src={formatUrl(`${item?.url || ''}`)} height={24} width={24} />
           {showName && (
             <TextareaView hideLabel maxLines={1} value={item.name} wrap />
           )}

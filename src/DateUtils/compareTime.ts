@@ -11,7 +11,9 @@ export const isTime = (date: string) => {
 };
 
 export const isTzTime = (date: string) => {
-  const input = date?.trim();
+  if (date === null) return false;
+  const input = String(date).trim();
+
   if (!input && isTime(date)) return false;
   const isoTzRegex =
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/i;

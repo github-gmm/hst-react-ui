@@ -9,21 +9,21 @@ import './FileView.less';
 
 export interface IFileViewProps {
   fileList: {
-    name: string;
-    url: string;
+    name?: string;
+    url?: string;
   }[];
   showView?: boolean;
   showDelete?: boolean;
   showDownload?: boolean;
   className?: string;
-  borderd?: boolean;
+  bordered?: boolean;
   handleDelete?: (index: number) => void;
 }
 
 const FileView = (props: IFileViewProps) => {
   const {
     fileList,
-    borderd = true,
+    bordered = true,
     showView = true,
     showDelete = false,
     showDownload = false,
@@ -31,12 +31,21 @@ const FileView = (props: IFileViewProps) => {
     handleDelete,
   } = props;
 
+  const preview = (path?: string) => {
+    if (path) window.open(path, '_blank');
+  };
+
   return (
-    <div className={`upload-files ${className} ${borderd && 'borderd'}`}>
+    <div className={`upload-files ${className} ${bordered && 'bordered'}`}>
       {fileList.map((item, _i) => (
         <div key={item.name} className={'upload-files-item'}>
           {showView && (
-            <div className={'view-icon'}>
+            <div
+              className={'view-icon'}
+              onClick={() => {
+                preview(item?.url);
+              }}
+            >
               <EyeOutlined />
             </div>
           )}

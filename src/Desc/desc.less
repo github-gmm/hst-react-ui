@@ -48,6 +48,7 @@
 
   .desc-value-textarea {
     flex: 1;
+    min-width: 0;
     position: relative;
     overflow: hidden;
     /* 多行省略 */
@@ -59,6 +60,10 @@
 
     line-clamp: var(--line-clamp);
     -webkit-line-clamp: var(--line-clamp);
+  }
+
+  .single-line {
+    text-overflow: ellipsis;
   }
 
   .tooltip-content {

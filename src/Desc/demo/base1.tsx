@@ -4,6 +4,11 @@ import React from 'react';
 export default () => {
   return (
     <div style={{ width: 400, border: '1px solid #eee', padding: 10 }}>
+      <Desc.TextareaView
+        hideLabel
+        value="This link is currently disabled and cannot be opened. Please contact your administrator or try again later if you believe you should have access to this resource."
+        maxLines={1}
+      />
       <DescForm labelWidth={150}>
         <Desc.TextView
           label="文本(自动换行)"
