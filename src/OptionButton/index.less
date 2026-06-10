@@ -1,72 +1,51 @@
 @import '~@/_styles/ant.less';
 
+@option-btn-radius: 8px;
+
 .@{layout-prefix}-btn-sm {
   border-radius: 6px !important;
 }
 
-.option-button {
-  --option-btn-color: var(--theme-primary-color);
-  --option-btn-bg-color: var(--page-bg-primary-color);
-  --option-btn-bd-color: var(--theme-primary-color);
-
+.option-button,
+.option-primary-button {
   box-sizing: border-box;
   padding: 0 12px;
-  margin: 1px;
+  border-radius: @option-btn-radius;
+  transition: color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.option-button {
+  --option-btn-color: var(--theme-primary-color);
+  --option-btn-bg-color: var(--white-color);
+  --option-btn-bd-color: var(--theme-primary-color);
+  --option-btn-color-dark: var(--theme-primary-color);
+  --option-btn-bg-color-dark: var(--black-color);
+  --option-btn-bd-color-dark: var(--theme-primary-color);
+
   color: var(--option-btn-color);
   border: 1px solid var(--option-btn-bd-color);
   background-color: var(--option-btn-bg-color);
-  transition: all 0.3s ease;
-  border-radius: 8px;
 
-  &:hover,
-  &:focus {
+  &:not(:disabled):not(.@{layout-prefix}-btn-disabled):hover,
+  &:not(:disabled):not(.@{layout-prefix}-btn-disabled):focus {
     color: var(--white-color) !important;
-    border: none !important;
-    border: 1px solid var(--option-btn-color) !important;
+    border-color: var(--option-btn-color) !important;
     background-color: var(--option-btn-color) !important;
   }
 }
 
 .theme-dark {
   .option-button {
-    --option-btn-color: var(--theme-primary-color);
-    --option-btn-bg-color: var(--page-bg-primary-color);
-    --option-btn-bd-color: var(--theme-primary-color);
-
-    box-sizing: border-box;
-    padding: 0 12px;
-    margin: 1px;
     color: var(--option-btn-color-dark);
     border: 1px solid var(--option-btn-bd-color-dark);
     background-color: var(--option-btn-bg-color-dark);
-    transition: all 0.3s ease;
-    border-radius: 8px;
 
-    &:hover,
-    &:focus {
+    &:not(:disabled):not(.@{layout-prefix}-btn-disabled):hover,
+    &:not(:disabled):not(.@{layout-prefix}-btn-disabled):focus {
       color: var(--white-color) !important;
-      border: none !important;
-      border: 1px solid var(--option-btn-bd-color-dark) !important;
+      border-color: var(--option-btn-bd-color-dark) !important;
       background-color: var(--option-btn-bd-color-dark) !important;
     }
   }
-}
-
-.option-primary-button {
-  --option-btn-color: var(--theme-primary-color);
-
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding: 0 12px;
-  transition: all 0.3s ease;
-  color: var(--white-color) !important;
-  border: 1px solid var(--option-btn-color) !important;
-  background-color: var(--option-btn-color) !important;
-}
-
-.option-primary-button:disabled {
-  transition: all 0.3s ease;
-  color: rgba(0, 0, 0, 40%) !important;
-  border: 1px solid rgba(0, 0, 0, 10%) !important;
-  background-color: var(--black-color-5) !important;
 }

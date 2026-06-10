@@ -1,28 +1,35 @@
-import { Button, ButtonProps } from 'antd';
+// import { useModel } from '@umijs/max';
+import { Button, type ButtonProps } from 'antd';
 import React, { useMemo } from 'react';
 import './index.less';
-import themeBtn from './themeBtn';
+import themeBtn, { type OptionButtonType } from './themeBtn';
 
-// import { useModel } from '@umijs/max';
-// import { isDev } from 'config/constants/buildInfo';
+type OptionButtonStyle = React.CSSProperties &
+  Partial<
+    Record<
+      | '--option-btn-color'
+      | '--option-btn-bg-color'
+      | '--option-btn-bd-color'
+      | '--option-btn-color-dark'
+      | '--option-btn-bg-color-dark'
+      | '--option-btn-bd-color-dark',
+      string
+    >
+  >;
 
 interface IOptionButtonProps extends ButtonProps {
-  /** 按钮颜色（文字和边框颜色） main: 主要、success: 成功、error: 错误、info: 信息、waring: 警告  */
-  optionType?: 'main' | 'success' | 'error' | 'info' | 'waring';
-  /** 子元素 */
-  children?: React.ReactNode;
+  /** 按钮颜色 main: 主要、success: 成功、error: 错误、info: 信息、waring: 警告 */
+  optionType?: OptionButtonType;
   /** 权限码 */
-  premCode?: string;
+  permissionCode?: string | string[];
   /** 隐藏 */
   hide?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
 /** 按钮组件 */
 export const OptionButton = (props: IOptionButtonProps) => {
   const {
-    // premCode,
+    // permissionCode,
     optionType,
     hide = false,
     children,
@@ -30,46 +37,39 @@ export const OptionButton = (props: IOptionButtonProps) => {
     className,
     ...restProps
   } = props;
+  // const { existCode } = useModel('permission');
 
-  const buttonStyle = useMemo(() => {
-    const colorMap = optionType
-      ? {
-          '--option-btn-color': themeBtn[`${optionType}Color`]?.font_color,
-          '--option-btn-bg-color': themeBtn[`${optionType}Color`]?.bg_color,
-          '--option-btn-bd-color': themeBtn[`${optionType}Color`]?.bd_color,
-          '--option-btn-color-dark':
-            themeBtn[`${optionType}Color_dark`]?.font_color,
-          '--option-btn-bg-color-dark':
-            themeBtn[`${optionType}Color_dark`]?.bg_color,
-          '--option-btn-bd-color-dark':
-            themeBtn[`${optionType}Color_dark`]?.bd_color,
-        }
-      : {};
+  const buttonStyle = useMemo<OptionButtonStyle>(() => {
+    const theme = optionType ? themeBtn[optionType] : undefined;
+
     return {
-      ...colorMap,
+      ...(theme
+        ? {
+            '--option-btn-color': theme.light.fontColor,
+            '--option-btn-bg-color': theme.light.bgColor,
+            '--option-btn-bd-color': theme.light.borderColor,
+            '--option-btn-color-dark': theme.dark.fontColor,
+            '--option-btn-bg-color-dark': theme.dark.bgColor,
+            '--option-btn-bd-color-dark': theme.dark.borderColor,
+          }
+        : {}),
       ...style,
     };
   }, [optionType, style]);
-  const isOption = !!optionType;
-  const primary = !optionType;
-  const btnClassName = isOption
-    ? `option${primary ? '-primary-' : '-'}button`
-    : '';
 
-  // const { existCode } = useModel('permission');
-  // const open = false;
-  // if (premCode && !existCode(premCode) && !isDev(APP_ENV) && open) return null;
+  if (hide) return null;
+  // if (permissionCode && !existCode(permissionCode)) return null;
 
   return (
-    !hide && (
-      <Button
-        {...restProps}
-        className={[btnClassName, className].join(' ')}
-        style={buttonStyle as React.CSSProperties}
-      >
-        {children}
-      </Button>
-    )
+    <Button
+      {...restProps}
+      className={[optionType ? 'option-button' : '', className]
+        .filter(Boolean)
+        .join(' ')}
+      style={buttonStyle}
+    >
+      {children}
+    </Button>
   );
 };
 
