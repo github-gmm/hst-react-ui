@@ -2,7 +2,7 @@ import type { ProFormItemProps } from '@ant-design/pro-components';
 import { ProFormText } from '@ant-design/pro-components';
 import { useDebounceFn } from 'ahooks';
 import React from 'react';
-import { maxNum, minNum } from '../NumberUtils';
+import { compare } from '../NumberUtils';
 import './field.less';
 
 export interface INumberProps
@@ -143,10 +143,10 @@ const Num = (props: INumberProps) => {
             if (value === undefined || value === null || value === '') {
               return Promise.resolve();
             }
-            if (min !== undefined && minNum(value, min)) {
+            if (min !== undefined && compare(value, '<', min)) {
               return Promise.reject(`不能小于 ${min}`);
             }
-            if (max !== undefined && maxNum(value, max)) {
+            if (max !== undefined && compare(value, '>', max)) {
               return Promise.reject(`不能大于 ${max}`);
             }
             return Promise.resolve();

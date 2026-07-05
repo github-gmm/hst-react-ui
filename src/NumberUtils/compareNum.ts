@@ -1,30 +1,95 @@
 import Decimal from 'decimal.js';
 
 Decimal.set({
-  precision: 100, // 计算时的总有效数字位数
-  rounding: Decimal.ROUND_HALF_UP, // 默认舍入方式
+  precision: 100,
+  rounding: Decimal.ROUND_HALF_UP,
 });
 
-// cmp() 是专门做比较的：
-export const compare = (a: string | number, b: string | number) => {
+export type NumberValue = string | number;
+export type CompareOperator = '>=' | '=' | '>' | '<' | '<=';
+
+const toDecimal = (value: NumberValue) => {
   try {
-    return new Decimal(a).cmp(new Decimal(b));
+    return new Decimal(value);
   } catch (error) {
-    return 2;
+    return undefined;
   }
 };
 
-// 返回 1：前者大于后者
-export const maxNum = (a: string | number, b: string | number) => {
-  return compare(a, b) === 1;
+const compareResult = (a: NumberValue, b: NumberValue) => {
+  const decimalA = toDecimal(a);
+  const decimalB = toDecimal(b);
+
+  if (!decimalA || !decimalB) {
+    return undefined;
+  }
+
+  return decimalA.cmp(decimalB);
 };
 
-// 返回 -1：前者小于后者
-export const minNum = (a: string | number, b: string | number) => {
-  return compare(a, b) === -1;
+export const compare = (
+  a: NumberValue,
+  operator: CompareOperator,
+  b: NumberValue,
+) => {
+  const result = compareResult(a, b);
+
+  if (result === undefined) {
+    return false;
+  }
+
+  switch (operator) {
+    case '>=':
+      return result >= 0;
+    case '=':
+      return result === 0;
+    case '>':
+      return result > 0;
+    case '<':
+      return result < 0;
+    case '<=':
+      return result <= 0;
+    default:
+      return false;
+  }
 };
 
-// 返回 0：相等
-export const sameNum = (a: string | number, b: string | number) => {
-  return compare(a, b) === 0;
+export const getMaxNum = (numbers: NumberValue[]) => {
+  let maxNum: NumberValue | undefined;
+  let maxDecimal: Decimal | undefined;
+
+  numbers.forEach((current) => {
+    const currentDecimal = toDecimal(current);
+
+    if (!currentDecimal) {
+      return;
+    }
+
+    if (!maxDecimal || currentDecimal.cmp(maxDecimal) > 0) {
+      maxNum = current;
+      maxDecimal = currentDecimal;
+    }
+  });
+
+  return maxNum;
+};
+
+export const getMinNum = (numbers: NumberValue[]) => {
+  let minNum: NumberValue | undefined;
+  let minDecimal: Decimal | undefined;
+
+  numbers.forEach((current) => {
+    const currentDecimal = toDecimal(current);
+
+    if (!currentDecimal) {
+      return;
+    }
+
+    if (!minDecimal || currentDecimal.cmp(minDecimal) < 0) {
+      minNum = current;
+      minDecimal = currentDecimal;
+    }
+  });
+
+  return minNum;
 };
